@@ -51,29 +51,50 @@ async function vout(rpctx, blockHeight) {
       if (vout.value <= 0) {
         return;
       }
+
       if (vout.scriptPubKey.type == "zerocoinmint") {
+        // zerocoin
         const to = {
           blockHeight,
           address: "zerocoinmint",
           n: vout.n,
           value: vout.value
         };
+        txout.push(to);
+        utxo.push({
+          ...to,
+          _id: `${ rpctx.txid }:${ vout.n }`,
+          txId: rpctx.txid
+        });
+      } else if (vout.scriptPubKey.type == "nulldata") {
+        // fee of proposal
+        const to = {
+          blockHeight,
+          address: "Fee of proposal submittion",
+          n: vout.n,
+          value: vout.value
+        };
+        txout.push(to);
+        utxo.push({
+          ...to,
+          _id: `${ rpctx.txid }:${ vout.n }`,
+          txId: rpctx.txid
+        });
       } else {
+        // normal
         const to = {
           blockHeight,
           address: vout.scriptPubKey.addresses[0],
           n: vout.n,
           value: vout.value
         };
+        txout.push(to);
+        utxo.push({
+          ...to,
+          _id: `${ rpctx.txid }:${ vout.n }`,
+          txId: rpctx.txid
+        });
       }
-
-
-      txout.push(to);
-      utxo.push({
-        ...to,
-        _id: `${ rpctx.txid }:${ vout.n }`,
-        txId: rpctx.txid
-      });
     });
 
     // Insert unspent transactions.
