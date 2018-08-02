@@ -45,7 +45,7 @@ export default class CardTX extends Component {
         </div>
         <div className="card__row">
           <span className="card__label">Block Value:</span>
-          <span className="card__result">{ numeral(blockValue).format('0,0.0000') } BWK</span>
+          <span className="card__result">{ numeral(blockValue).format('0,0.0000') } PHR</span>
         </div>
         <div className="card__row">
           <span className="card__label">Block Hash:</span>

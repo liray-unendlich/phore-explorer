@@ -39,7 +39,7 @@ export default class CardTXIn extends Component {
           value: tx.value
             ? (
                 <span className="badge badge-danger">
-                  -{ numeral(tx.value).format('0,0.0000') } BWK
+                  -{ numeral(tx.value).format('0,0.0000') } PHR
                 </span>
               )
             : ''
