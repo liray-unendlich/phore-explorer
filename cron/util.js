@@ -56,7 +56,7 @@ async function vout(rpctx, blockHeight) {
         // zerocoin
         const to = {
           blockHeight,
-          address: "zerocoinmint",
+          address: "ZEROCOIN_MINT_POOL",
           n: vout.n,
           value: vout.value
         };
@@ -70,7 +70,7 @@ async function vout(rpctx, blockHeight) {
         // fee of proposal
         const to = {
           blockHeight,
-          address: "Fee of proposal submission",
+          address: "FEE_OF_SUBMISSION_PROPOSAL",
           n: vout.n,
           value: vout.value
         };
