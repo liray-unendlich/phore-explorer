@@ -1,6 +1,7 @@
-
 require('babel-polyfill');
-const { rpc } = require('../lib/cron');
+const {
+  rpc
+} = require('../lib/cron');
 const TX = require('../model/tx');
 const UTXO = require('../model/utxo');
 
@@ -26,7 +27,11 @@ async function vin(rpctx) {
 
     // Remove unspent transactions.
     if (txIds.size) {
-      await UTXO.remove({ _id: { $in: Array.from(txIds) } });
+      await UTXO.remove({
+        _id: {
+          $in: Array.from(txIds)
+        }
+      });
     }
   }
   return txin;
@@ -46,13 +51,22 @@ async function vout(rpctx, blockHeight) {
       if (vout.value <= 0) {
         return;
       }
+      if (vout.scriptPubKey.type == "zerocoinmint") {
+        const to = {
+          blockHeight,
+          address: "zerocoinmint",
+          n: vout.n,
+          value: vout.value
+        };
+      } else {
+        const to = {
+          blockHeight,
+          address: vout.scriptPubKey.addresses[0],
+          n: vout.n,
+          value: vout.value
+        };
+      }
 
-      const to = {
-        blockHeight,
-        address: vout.scriptPubKey.addresses[0],
-        n: vout.n,
-        value: vout.value
-      };
 
       txout.push(to);
       utxo.push({
