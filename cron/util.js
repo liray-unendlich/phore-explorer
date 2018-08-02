@@ -70,7 +70,7 @@ async function vout(rpctx, blockHeight) {
         // fee of proposal
         const to = {
           blockHeight,
-          address: "Fee of proposal submittion",
+          address: "Fee of proposal submission",
           n: vout.n,
           value: vout.value
         };
