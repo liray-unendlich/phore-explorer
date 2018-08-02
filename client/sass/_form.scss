@@ -1,7 +1,7 @@
 
 button {
-	background-color: $blue;
-	border: 1px solid $blue;
+	background-color: #00d188;
+	border: 1px solid #00d188;
 	border-radius: 3px;
 	color: $white;
 	cursor: pointer;
@@ -10,7 +10,7 @@ button {
 
 	&:focus,
 	&:hover {
-		background-color: darken($blue, 10%);
+		background-color: darken(#00d188, 10%);
 	}
 }
 
