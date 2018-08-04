@@ -18,13 +18,14 @@ const Budget = require('../model/budget');
 async function syncPR() {
 
   await Budget.remove({});
+ // Set timeout for budget data get.
   rpc.timeout(1000); //1 sec
 
   const prs = await rpc.call('getbudgetinfo');
   const inserts = [];
 
   await forEach(prs, async (pr) => {
-    const budget = new Badget({
+    const budget = new Budget({
       name = pr.Name,
       url = pr.URL,
       hash = pr.Hash,
@@ -70,4 +71,3 @@ async function update() {
 }
 
 update();
-
