@@ -10,11 +10,10 @@ const moment = require('moment');
 const Budget = require('../model/budget');
 
 
-// proposal function
-// get proposal list
-//
-
-
+/**
+* proposal function
+* get proposal lists.
+*/
 async function syncPR() {
 
   await Budget.remove({});
@@ -26,16 +25,16 @@ async function syncPR() {
 
   await forEach(prs, async (pr) => {
     const budget = new Budget({
-      name = pr.Name,
-      url = pr.URL,
-      hash = pr.Hash,
-      sheight = pr.BlockStart,
-      eheight = pr.BlockEnd,
-      addr = pr.PaymentAddress,
-      yea = pr.Yeas,
-      nay = pr.Nays,
-      tpay = pr.TotalPayment,
-      mpay = pr.MonthlyPayment
+      name: pr.Name,
+      url: pr.URL,
+      hash: pr.Hash,
+      sheight: pr.BlockStart,
+      eheight: pr.BlockEnd,
+      addr: pr.PaymentAddress,
+      yea: pr.Yeas,
+      nay: pr.Nays,
+      tpay: pr.TotalPayment,
+      mpay: pr.MonthlyPayment
     });
 
     inserts.push(budget);
