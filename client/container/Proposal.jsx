@@ -117,9 +117,9 @@ class Proposal extends Component {
               ),
               //status:
               totalpayment: pr.tpay,
-              monthlypayment: pr.mpay,
+              monthlypayment: pr.mpay
             };
-          }), ['status']) } />
+          }), ['eheight']) } />
         <Pagination
           current={ this.state.page }
           className="float-right"
