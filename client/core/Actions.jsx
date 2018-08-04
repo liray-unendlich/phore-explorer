@@ -90,6 +90,12 @@ export const getMNs = (query) => {
   });
 };
 
+export const getPRs = (query) => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('prs', resolve, reject, query);
+  });
+};
+
 export const getPeers = () => {
   return new promise((resolve, reject) => {
     return getFromWorker(
@@ -192,6 +198,7 @@ export default {
   getCoinsWeek,
   getIsBlock,
   getMNs,
+  getPRs,
   getPeers,
   getSupply,
   getTop100,
