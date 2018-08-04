@@ -38,12 +38,12 @@ async function syncPR() {
     });
 
     inserts.push(budget);
+    console.log(`Name: ${ budget.Name } added.`)
   });
 
   if (inserts.length) {
     await Budget.insertMany(inserts);
   }
-  console.log(`Name: ${ budget.Name } added.`)
 }
 
 /**
