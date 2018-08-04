@@ -32,6 +32,7 @@ class Proposal extends Component {
         // { key: 'status', title: 'Status' },
         { key: 'totalpayment', title: 'Total' },
         { key: 'monthlypayment', title: 'Monthly' },
+        { key: 'eheight', title: 'End Height' },
       ],
       error: null,
       loading: true,
@@ -117,7 +118,8 @@ class Proposal extends Component {
               ),
               //status:
               totalpayment: pr.tpay,
-              monthlypayment: pr.mpay
+              monthlypayment: pr.mpay,
+              eheight: pr.eheight
             };
           }), ['eheight']) } />
         <Pagination
