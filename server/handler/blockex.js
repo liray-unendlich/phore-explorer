@@ -340,7 +340,7 @@ const getProposals = async (req, res) => {
     const limit = req.query.limit ? parseInt(req.query.limit, 10) : 1000;
     const skip = req.query.skip ? parseInt(req.query.skip, 10) : 0;
     const total = await Budget.find().sort({ name: 1, sheight: -1 }).count();
-    const prs = await Budget.find().skip(skip).limit(limit).sort({ name: 1, sheight: -1 });
+    const prs = await Budget.find().skip(skip).limit(limit).sort({ sheight: -1, name: 1 });
 
     res.json({prs, pages: total <= limit ? 1 : Math.ceil(total/limit) });
   } catch(err) {
@@ -358,7 +358,7 @@ const getProposals = async (req, res) => {
 const getProposalByName = async (req, res) => {
   try {
     const name = req.params.name;
-    const prs = await Budget.findOne({ name });
+    const prs = await Budget.findOne({ Name: new RegExp('^' + name + '$', "i")});
 
     res.json({ prs });
   } catch(err) {
