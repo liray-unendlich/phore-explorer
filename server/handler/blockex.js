@@ -358,7 +358,7 @@ const getProposals = async (req, res) => {
 const getProposalByName = async (req, res) => {
   try {
     const name = req.params.name;
-    const prs = await Budget.findOne({ Name: new RegExp('^' + name + '$', "i")});
+    const prs = await Budget.findOne({ name: new RegExp('^' + name + '$', "i")});
 
     res.json({ prs });
   } catch(err) {
