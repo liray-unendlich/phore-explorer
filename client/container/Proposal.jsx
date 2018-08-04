@@ -101,7 +101,7 @@ class Proposal extends Component {
           title="Proposals" />
         <Table
           cols={ this.state.cols }
-          data={ this.state.prs.map((pr) => {
+          data={ sortBy(this.state.prs.map((pr) => {
               ...pr,
               name: pr.name,
               url: (
@@ -118,7 +118,7 @@ class Proposal extends Component {
               totalpayment: pr.tpay,
               monthlypayment: pr.mpay
             };
-          })} />
+          }), ['name'])} />
         <Pagination
           current={ this.state.page }
           className="float-right"
