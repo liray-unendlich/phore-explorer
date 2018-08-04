@@ -12,6 +12,7 @@ const Peer = require('../../model/peer');
 const Rich = require('../../model/rich');
 const TX = require('../../model/tx');
 const UTXO = require('../../model/utxo');
+const Budget = require('../../model/budget');
 
 /**
  * Get transactions and unspent transactions by address.
@@ -330,6 +331,43 @@ const getMasternodeCount = async (req, res) => {
 };
 
 /**
+* Get the list of proposals from the database.
+* @param {Object} req The request object.
+* @param {Object} res The response object.
+*/
+const getProposals = async (req, res) => {
+  try {
+    const limit = req.query.limit ? parseInt(req.query.limit, 10) : 1000;
+    const skip = req.query.skip ? parseInt(req.query.skip, 10) : 0;
+    const total = await Budget.find().sort({ name: 1, sheight: -1 }).count();
+    const prs = await Budget.find().skip(skip).limit(limit).sort({ name: 1, sheight: -1 });
+
+    res.json({prs, pages: total <= limit ? 1 : Math.ceil(total/limit) });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send(err.message || err);
+  }
+}
+
+/**
+* Search proposals by name.
+* @param {Object} req The request object.
+* @param {Object} res The response object.
+*/
+
+const getProposalByName = async (req, res) => {
+  try {
+    const name = req.params.name;
+    const prs = await Budget.findOne({ name });
+
+    res.json({ prs });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send(err.message || err);
+  }
+}
+
+/**
  * Get the list of peers from the database.
  * @param {Object} req The request object.
  * @param {Object} res The response object.
@@ -536,6 +574,8 @@ module.exports =  {
   getMasternodes,
   getMasternodeByAddress,
   getMasternodeCount,
+  getProposals,
+  getProposalByName,
   getPeer,
   getSupply,
   getTop100,

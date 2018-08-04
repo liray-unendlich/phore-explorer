@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 /**
- * Masternode
+ * Budget
  *
  * Connected masternode to the network.
  */
@@ -20,4 +20,4 @@ const Budget = mongoose.model('Budget', new mongoose.Schema({
   mpay: { index: true, required: true, type: Number }
 }, { versionKey: false }), 'budget');
 
-module.exports =  Masternode;
+module.exports =  Budget;
