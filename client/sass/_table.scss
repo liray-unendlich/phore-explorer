@@ -68,12 +68,14 @@
 	th:first-child {
 		padding-left: 32px;
 		border-radius: 5px 0 0 0;
+		background: rgb(21, 28, 38);
 	}
 
 	th:last-child {
 		padding-right: 32px;
 		text-align: right;
 		border-radius: 0 5px 0 0;
+		background: rgb(21, 28, 38);
 	}
 
 	td {
