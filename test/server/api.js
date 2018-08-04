@@ -11,7 +11,7 @@ chai.use(http);
 describe('API', () => {
   it('/api/address/:hash', (done) => {
     chai.request(server)
-      .get('/api/address/bXPPis5Gf4y3stXahsKFfjXaR29TtN7yNd')
+      .get('api/address/PRgtiCnHnxcNVfRbGttX9EfNJpuZcTodY7')
       .end((err, res) => {
         expect(err).to.be.null;
         res.should.have.status(200);
@@ -19,9 +19,9 @@ describe('API', () => {
       });
   });
 
-  it('/api/block/hash/:hash', (done) => {
+  it('/api/block/:hash', (done) => {
     chai.request(server)
-      .get('/api/block/hash/0000000000004dbcd7d0ca813e318ea5154357eef2d75bb491fba6e9241949b7')
+      .get('api/block/6ed5fa55804256b300ae98776226005c310e098f80f16aa0bca27c538a7c6159')
       .end((err, res) => {
         expect(err).to.be.null;
         res.should.have.status(200);
@@ -29,9 +29,9 @@ describe('API', () => {
       });
   });
 
-  it('/api/block/height/:height', (done) => {
+  it('/api/block/:height', (done) => {
     chai.request(server)
-      .get('/api/block/height/36007')
+      .get('/api/block/36007')
       .end((err, res) => {
         expect(err).to.be.null;
         res.should.have.status(200);
@@ -110,7 +110,7 @@ describe('API', () => {
 
   it('/api/tx/:hash', (done) => {
     chai.request(server)
-      .get('/api/tx/7ca4b28da5304e4a9deb70a156dabcbf1dce86198aab2696ea8b1467cc70c754')
+      .get('/api/tx/8222d3ff3267550fad216e3b603f89170aa7e60162b6a45fadf25cf08640f25f')
       .end((err, res) => {
         expect(err).to.be.null;
         res.should.have.status(200);
