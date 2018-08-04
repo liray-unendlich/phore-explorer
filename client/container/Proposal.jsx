@@ -113,7 +113,7 @@ class Proposal extends Component {
                 <link to={ `${pr.url}` }>
                   {`${ pr.addr.substr(0, 20) }...` }
                 </link>
-              )
+              ),
               addr: (
                 <Link to={ `/address/${ pr.addr }` }>
                   { `${ pr.addr.substr(0, 20) }...` }
