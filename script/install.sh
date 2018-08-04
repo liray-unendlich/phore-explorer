@@ -133,7 +133,7 @@ installBlockEx () {
     cat > /home/explorer/blockex/config.js << EOL
 const config = {
   'api': {
-    'host': 'http://207.148.75.163',
+    'host': 'http://127.0.0.1',
     'port': '3000',
     'prefix': '/api',
     'timeout': '180s'
