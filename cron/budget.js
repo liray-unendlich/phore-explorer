@@ -38,7 +38,7 @@ async function syncPR() {
     });
 
     inserts.push(budget);
-    console.log(`Name: ${ budget.Name } added.`)
+    console.log(`Name: ${ budget.name } added.`)
   });
 
   if (inserts.length) {
