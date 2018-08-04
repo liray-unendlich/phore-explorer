@@ -32,7 +32,6 @@ class Proposal extends Component {
         // { key: 'status', title: 'Status' },
         { key: 'totalpayment', title: 'Total' },
         { key: 'monthlypayment', title: 'Monthly' },
-        { key: 'eheight', title: 'End Height' },
       ],
       error: null,
       loading: true,
@@ -102,8 +101,7 @@ class Proposal extends Component {
           title="Proposals" />
         <Table
           cols={ this.state.cols }
-          data={ sortBy(this.state.prs.map((pr) => {
-            return {
+          data={ this.state.prs.map((pr) => {
               ...pr,
               name: pr.name,
               url: (
@@ -111,7 +109,6 @@ class Proposal extends Component {
                   {`${ pr.addr.substr(0, 20) }...` }
                 </link>
               ),
-              late: pr.late,
               addr: (
                 <Link to={ `/address/${ pr.addr }` }>
                   { `${ pr.addr.substr(0, 20) }...` }
@@ -119,10 +116,9 @@ class Proposal extends Component {
               ),
               //status:
               totalpayment: pr.tpay,
-              monthlypayment: pr.mpay,
-              eheight: pr.eheight
+              monthlypayment: pr.mpay
             };
-          }), ['eheight']) } />
+          })} />
         <Pagination
           current={ this.state.page }
           className="float-right"
