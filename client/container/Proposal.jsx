@@ -101,8 +101,7 @@ class Proposal extends Component {
           title="Proposals" />
         <Table
           cols={ this.state.cols }
-          data={ sortBy(this.state.mns.map((mn) => {
-            const lastPaidAt = moment(mn.lastPaidAt).utc();
+          data={ sortBy(this.state.prs.map((pr) => {
             // const isFinished = pr.eheight >= nowblocknumber;
             // const isApproved = pr.yeas - pr.nays >= masternodecounts / 10;
 
