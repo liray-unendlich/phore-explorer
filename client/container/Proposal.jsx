@@ -102,6 +102,7 @@ class Proposal extends Component {
         <Table
           cols={ this.state.cols }
           data={ sortBy(this.state.prs.map((pr) => {
+            return {
               ...pr,
               name: pr.name,
               url: (
