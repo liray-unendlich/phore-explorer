@@ -102,12 +102,9 @@ class Proposal extends Component {
         <Table
           cols={ this.state.cols }
           data={ sortBy(this.state.prs.map((pr) => {
-            // const isFinished = pr.eheight >= nowblocknumber;
-            // const isApproved = pr.yeas - pr.nays >= masternodecounts / 10;
-
             return {
               ...pr,
-              name: ['name'],
+              name: pr.name,
               url: (
                 <link to={ `${pr.url}` }>
                   {`${ pr.addr.substr(0, 20) }...` }
@@ -119,8 +116,8 @@ class Proposal extends Component {
                 </Link>
               ),
               //status:
-              totalpayment: ['tpay'],
-              monthlypayment: ['mpay'],
+              totalpayment: pr.tpay,
+              monthlypayment: pr.mpay,
             };
           }), ['status']) } />
         <Pagination
