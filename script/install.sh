@@ -121,7 +121,7 @@ EOL
     sudo systemctl start phored
     sudo systemctl enable phored
     echo "Sleeping for 1 hour while node syncs blockchain..."
-    sleep 1h
+    sleep 10s
     clear
 }
 
