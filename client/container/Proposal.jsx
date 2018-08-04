@@ -111,6 +111,7 @@ class Proposal extends Component {
                   {`${ pr.addr.substr(0, 20) }...` }
                 </link>
               ),
+              late: pr.late,
               addr: (
                 <Link to={ `/address/${ pr.addr }` }>
                   { `${ pr.addr.substr(0, 20) }...` }
