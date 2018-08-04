@@ -358,7 +358,7 @@ const getProposals = async (req, res) => {
 const getProposalByName = async (req, res) => {
   try {
     const name = req.params.name;
-    const prs = await Budget.findOne({name: /${name}/ });
+    const prs = await Budget.findOne({ name });
 
     res.json({ prs });
   } catch(err) {
