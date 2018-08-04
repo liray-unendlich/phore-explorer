@@ -43,7 +43,7 @@ async function syncPR() {
   if (inserts.length) {
     await Budget.insertMany(inserts);
   }
-  console.log(`Name: ${ pr.Name } added.`)
+  console.log(`Name: ${ budget.Name } added.`)
 }
 
 /**
