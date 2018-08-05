@@ -28,13 +28,17 @@ async function syncPR() {
       name: pr.Name,
       url: pr.URL,
       hash: pr.Hash,
-      sheight: pr.BlockStart,
-      eheight: pr.BlockEnd,
-      addr: pr.PaymentAddress,
-      yea: pr.Yeas,
-      nay: pr.Nays,
-      tpay: pr.TotalPayment,
-      mpay: pr.MonthlyPayment
+      feehash: pr.FeeHash,
+      address: pr.PaymentAddress,
+      total_amount: pr.TotalPayment,
+      monthly_amount: pr.MonthlyPayment,
+      total_count: pr.TotalPaymentCount,
+      remained_count: pr.RemainingPaymentCount,
+      start_height: pr.BlockStart,
+      end_height: pr.BlockEnd,
+      yays: pr.Yeas,
+      nays: pr.Nays,
+      ratio: pr.Ratio
     });
 
     inserts.push(budget);

@@ -11,13 +11,17 @@ const Budget = mongoose.model('Budget', new mongoose.Schema({
   name: { index: true, required: true, type: String },
   url: { index: true, required: true, type: String },
   hash: { index: true, required: true, type: String },
-  sheight: { required: true, type: Number },
-  eheight: { required: true, type: Number },
-  addr: { index: true, required: true, type: String },
-  yea: { type: Number },
-  nay: { type: Number },
-  tpay: { index: true, required: true, type: Number },
-  mpay: { index: true, required: true, type: Number }
+  feehash: {index: true, required: true, type: String },
+  address: { index: true, required: true, type: String },
+  total_amount: { index: true, required: true, type: Number },
+  monthly_amount: { index: true, required: true, type: Number },
+  total_count: { index: true, required: true, type: Number },
+  remained_count: { required: true, type: Number },
+  start_height: { index: true, required: true, type: Number },
+  end_height: { index: true, required: true, type: Number },
+  yays: { type: Number },
+  nays: { type: Number },
+  ratio: { type: Number }
 }, { versionKey: false }), 'budget');
 
 module.exports =  Budget;
