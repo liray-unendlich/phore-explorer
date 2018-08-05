@@ -26,13 +26,11 @@ class Masternode extends Component {
     this.debounce = null;
     this.state = {
       cols: [
-        { key: 'lastPaidAt', title: 'Last Paid' },
-        { key: 'active', title: 'Active' },
         { key: 'addr', title: 'Address' },
-        { key: 'txHash', title: 'Collateral TX' },
-        { key: 'txOutIdx', title: 'Index' },
-        { key: 'ver', title: 'Version' },
         { key: 'status', title: 'Status' },
+        { key: 'txHash', title: 'Collateral TX' },
+        { key: 'ver', title: 'Version' },
+        { key: 'active', title: 'Active' },
       ],
       error: null,
       loading: true,
