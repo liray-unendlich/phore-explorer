@@ -28,10 +28,10 @@ class Proposal extends Component {
       cols: [
         { key: 'name', title: 'Name' },
         { key: 'url', title: 'URL' },
-        { key: 'addr', title: 'Address' },
+        { key: 'address', title: 'Address' },
         // { key: 'status', title: 'Status' },
-        { key: 'totalpayment', title: 'Total' },
-        { key: 'monthlypayment', title: 'Monthly' },
+        { key: 'total_amount', title: 'Total' },
+        { key: 'monthly_amount', title: 'Monthly' },
       ],
       error: null,
       loading: true,
@@ -104,20 +104,16 @@ class Proposal extends Component {
           data={ sortBy(this.state.prs.map((pr) => {
             return {
               ...pr,
-              name: pr.name,
               url: (
                 <link to={ `${pr.url}` }>
-                  {`${ pr.addr.substr(0, 20) }...` }
+                  {`${ pr.url.substr(0, 20) }...` }
                 </link>
               ),
-              addr: (
-                <Link to={ `/address/${ pr.addr }` }>
-                  { `${ pr.addr.substr(0, 20) }...` }
+              address: (
+                <Link to={ `/address/${ pr.address }` }>
+                  { `${ pr.address.substr(0, 20) }...` }
                 </Link>
-              ),
-              //status:
-              totalpayment: pr.tpay,
-              monthlypayment: pr.mpay
+              )
             };
           }), ['name'])} />
         <Pagination
