@@ -5,12 +5,12 @@ Bulwark Explorer
 [![GitHub license](https://img.shields.io/github/license/bulwark-crypto/bulwark-explorer.svg)](https://github.com/bulwark-crypto/bulwark-explorer/blob/master/COPYING) [![Build Status](https://travis-ci.org/bulwark-crypto/bulwark-explorer.svg?branch=master)](https://travis-ci.org/bulwark-crypto/bulwark-explorer) [![Discord](https://img.shields.io/discord/374271866308919296.svg)](https://discord.me/bulwarkcrypto) [![GitHub version](https://badge.fury.io/gh/bulwark-crypto%2Fbulwark-explorer.svg)](https://badge.fury.io/gh/bulwark-crypto%2Fbulwark-explorer)
 =====
 
-Simple cryptocurrency block explorer system.
+Block Explorer(マスターノード/Zerocoin対応)
 
-## Required
-This repo assumes `git`, `mongodb`, `node`, `yarn`, and are installed with configuration done.  Please adjust commands to your local environment. 
+## 必要条件
+`git`, `mongodb`, `node`, `yarn`が導入されていることが前提です。各種設定は個々の環境に合わせてください。
 
-Download links:
+ダウンロードリンク:
 
 https://docs.mongodb.com/manual/administration/install-on-linux/
 
@@ -18,50 +18,52 @@ https://nodejs.org/en/download/package-manager/
 
 https://yarnpkg.com/lang/en/docs/install/
 
-It is also required to have the Bulwark daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
+また、各通貨のデーモン(ex. phored)が動作することも前提です。ブロックエクスプローラの設定をする前に同期を完了させていることをお勧めします。
 
-Our geniuses here at BulwarkCorp™ have put together a script to do this for you. Just run
+デーモンのインストールスクリプト(Phore)
 
-`bash script/bulwarkd_setup.sh`
+`bash script/phored_setup.sh`
 
-This will install the latest Bulwark wallet and create a rpc username/password before starting the daemon.
+このコマンドによりRPCユーザー名/パスワードを設定しPhoreデーモンを起動できます。
 
-## Install
-`git clone https://github.com/bulwark-crypto/bulwark-explorer.git` - copy repo to local folder.
+## インストール
+`git clone https://github.com/liray-unendlich/phore-explorer.git` - レポをダウンロード
 
-`cd blockex` - change into project directory.
+`cd phore-explorer` - レポ内へ移動
 
-`yarn install` - install packages used by the system.
+`yarn install` - 各種パッケージをダウンロード
 
-## Configure
-#### BlockEx API Configuration
-`cp config.template.js config.js` - setup configuration using template.
+## 設定
+#### APIの設定
+`cp config.template.js config.js` - テンプレートを利用し設定ファイルを作成
 
-#### Database Configuration
-`mongo` - connect using mongo client.
+#### データベースの設定
+`mongo` - mongodbの設定開始
 
-`use blockex` - switch to database.
+`use blockex` - blockexという名称のデータベースを作成
 
-`db.createUser( { user: "blockexuser", pwd: "Explorer!1", roles: [ "readWrite" ] } )` - create a user with the values stored in the `config.js` file from above, meaning they should match.
+`db.createUser( { user: "blockexuser", pwd: "Explorer!1", roles: [ "readWrite" ] } )` - ユーザー名/パスワードを指定しユーザーを作成。このユーザー名/パスワードはconfig.jsと一致させてください。
 
-`exit` - exit the mongo client.
+`exit` - mongodbの設定を終了
 
-#### Crontab
-The following automated tasks are currently needed for BlockEx to update but before running the tasks please update the cron script `/path/to/blockex/script/cron_block.sh` for the block with the local `/path/to/node`.
+#### Cronタブの設定
+block explorerの自動更新を行うための設定です。これをcrontabに書き込む前にここの環境に合わせpathを変更してください。cronを設定する前に`node cron/block.js`を実行するか、`/path/to/phore-explorer/script/cron_block.sh`を実行しブロックデータを一度取得してください。node.jsのパスに合わせ`/path/to/node`を変更してください。
 
-`yarn run cron:coin` - will fetch coin related information like price and supply from coinmarketcap.com.
+`yarn run cron:coin` - coinの価格情報/流通情報をCoinMarketcap.comより取得します。
 
-`yarn run cron:masternode` - updates the masternodes list in the database with the most recent information clearing old information before.
+`yarn run cron:masternode` - マスターノードのリストを更新し、データベースへ保存します。
 
-`yarn run cron:peer` - gather the list of peers and fetch geographical IP information.
+`yarn run cron:peer` - ピア情報の更新、保存を行います。
 
-`yarn run cron:block` - will sync blocks and transactions by storing them in the database.
+`yarn run cron:block` - ブロックデータの同期、保存を行います。
 
-`yarn run cron:rich` - generate the rich list.
+`yarn run cron:rich` - リッチリストの作成を行います。
 
-__Note:__ is is recommended to run all the crons before editing the crontab to have the information right away.  Follow the order above, start with `cron:coin` and end with `cron:rich`.
+`yarn run cron:proposal` - プロポーザルリストの作成を行います(データベースへの取得まで導入済み)。
 
-To setup the crontab please see run `crontab -e` to edit the crontab and paste the following lines (edit with your local information):
+__Note:__ crontabに追加する前に、各1回ずつ実行しておくことをお勧めします。
+
+crontabの設定は `crontab -e`で行えます。各種パスはここの環境に合わせ設定してください。:
 ```
 */1 * * * * cd /path/to/blockex && ./script/cron_block.sh >> ./tmp/block.log 2>&1
 */1 * * * * cd /path/to/blockex && /path/to/node ./cron/masternode.js >> ./tmp/masternode.log 2>&1
@@ -70,19 +72,19 @@ To setup the crontab please see run `crontab -e` to edit the crontab and paste t
 */5 * * * * cd /path/to/blockex && /path/to/node ./cron/coin.js >> ./tmp/coin.log 2>&1
 ```
 
-## Build
-At this time only the client web interface needs to be built using webpack and this can be done by running `yarn run build:web`.  This will bundle the application and put it in the `/public` folder for delivery.
+## ビルド
+クライアントのウェブインターフェースはwebpackを利用してビルドします。以下のコマンドを用いてビルドが可能で、
+`yarn run build:web`
+バンドル後 `/public` へデータを移しています。
 
-## Run
-`yarn run start:api` - will start the api.
+## 実行
+`yarn run start:api` - APIのスタート
 
-`yarn run start:web` - will start the web, open browser [http://localhost:8081](http://localhost:8081).
+`yarn run start:web` - ウェブをスタートし [http://localhost:8081](http://localhost:8081) で接続できます。
 
-## Test
-`yarn run test:client` - will run the client side tests.
+## テスト
+`yarn run test:web` - クライアントサイドのテストを行います。
 
-`yarn run test:server` - will test the rpc connection, database connection, and api endpoints.
+`yarn run test:server` - RPC, データベース, APIのテストを行います。
 
-## To-Do
-- Write more tests
-- Cluster support for api
+`yarn run test:rpc` - RPCのみのテストを行います。
