@@ -9,6 +9,8 @@ Phore Explorer
 
 Simple cryptocurrency block explorer system(include Zerocoin, Masternode, Proposal).
 
+Thanks for cool blockchain explorer, Bulwark developer teams!
+
 ## Required
 This repo assumes `git`, `mongodb`, `node`, `yarn`, and are installed with configuration done.  Please adjust commands to your local environment.
 
@@ -20,23 +22,23 @@ https://nodejs.org/en/download/package-manager/
 
 https://yarnpkg.com/lang/en/docs/install/
 
-It is also required to have the Bulwark daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
+It is also required to have the phore daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
 
-Our geniuses here at BulwarkCorp™ have put together a script to do this for you. Just run
+I fixed bulwark daemon install script to phore.
 
-`bash script/bulwarkd_setup.sh`
+`bash script/phored_setup.sh`
 
-This will install the latest Bulwark wallet and create a rpc username/password before starting the daemon.
+This will install the latest phore wallet and create a rpc username/password before starting the daemon.
 
 ## Install
-`git clone https://github.com/bulwark-crypto/bulwark-explorer.git` - copy repo to local folder.
+`git clone https://github.com/liray-unendlich/phore-explorer.git` - copy repo to local folder.
 
-`cd blockex` - change into project directory.
+`cd phore-explorer` - change location.
 
 `yarn install` - install packages used by the system.
 
 ## Configure
-#### BlockEx API Configuration
+#### Phore Explorer API Configuration
 `cp config.template.js config.js` - setup configuration using template.
 
 #### Database Configuration
