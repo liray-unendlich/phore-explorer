@@ -8,6 +8,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import sortBy from 'lodash/sortBy';
+import { Button } from 'react-boostrap';
 
 import HorizontalRule from '../component/HorizontalRule';
 import Pagination from '../component/Pagination';
@@ -31,7 +32,8 @@ class Proposal extends Component {
         { key: 'address', title: 'Address' },
         { key: 'total_amount', title: 'Total' },
         { key: 'monthly_amount', title: 'Monthly' },
-        { key: 'end_height', title: 'End block' },
+        { key: 'end_height', title: 'End Block' },
+        { key: 'score', title: 'Votes' },
       ],
       error: null,
       loading: true,
@@ -112,7 +114,8 @@ class Proposal extends Component {
                 <Link to={ `/address/${ pr.address }` }>
                   { `${ pr.address.substr(0, 20) }...` }
                 </Link>
-              )
+              ),
+              score: ( pr.yays - pr.nays )
           }))} />
         <Pagination
           current={ this.state.page }
