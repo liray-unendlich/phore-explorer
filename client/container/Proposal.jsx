@@ -100,7 +100,7 @@ class Proposal extends Component {
         <HorizontalRule
           select={ select }
           title="Proposals" />
-        <p>If score is more than 10% of count of masternode, the proposal will pass.<br></p>
+        <p>If score is more than 10% of count of masternode, the proposal will pass.</p>
         <Table
           cols={ this.state.cols }
           data={ this.state.prs.map((pr) => ({
