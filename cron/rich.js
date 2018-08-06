@@ -23,6 +23,8 @@ async function syncRich() {
     address: addr._id,
     value: addr.sum
   })));
+
+  await Rich.remove({address: "ZEROCOIN_MINT_POOL"});
 }
 
 /**
