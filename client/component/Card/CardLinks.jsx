@@ -12,7 +12,7 @@ const CardLinks = () => (
     <a href="https://discord.gg/Aucncz5" target="_blank">Discord</a><br />
     <a href="https://t.me/PhoreProject" target="_blank">Telegram</a><br />
     <a href="https://twitter.com/PhoreCrypto" target="_blank">Twitter</a><br />
-    <a href="https://medium.com/@phoreblockchain" target="_blank">Medium</a>
+    <a href="https://medium.com/@phoreblockchain" target="_blank">Medium</a><br />
   </Card>
 );
 
