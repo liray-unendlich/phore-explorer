@@ -115,7 +115,7 @@ class Proposal extends Component {
                 </Link>
               )
             };
-          }), ['end_height'])} />
+          }), ['name'])} />
         <Pagination
           current={ this.state.page }
           className="float-right"
