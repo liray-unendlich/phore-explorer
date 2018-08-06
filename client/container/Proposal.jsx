@@ -105,9 +105,9 @@ class Proposal extends Component {
             return {
               ...pr,
               url: (
-                <link to={ `${ pr.url }` }>
+                <Link to={ `${ pr.url }` }>
                   {`${ pr.url.substr(0, 20) }...` }
-                </link>
+                </Link>
               ),
               address: (
                 <Link to={ `/address/${ pr.address }` }>
