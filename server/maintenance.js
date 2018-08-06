@@ -18,7 +18,7 @@ app.use((req, res) => {
         <title>Bulwark Explorer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css.maps" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <style>
 html, body {
   margin: 0;
@@ -81,15 +81,15 @@ a {
   </head>
   <body>
     <div class="logo">
-      <a href="https://bulwarkcrypto.com/">
-        <img src="https://bulwarkcrypto.com/wp-content/uploads/2018/06/logo@2x.png" title="Bulwark Crypto"/>
+      <a href="https://phore.io/">
+        <img src="https://github.com/phoreproject/Style-Guide/blob/master/images/Phore_Blockchain_icon.png" title="Phore Blockchain"/>
       </a>
       </div>
     <div class="container">
         <img src="https://media.giphy.com/media/vIDsZm5DMZ5Ha/giphy.gif" title="Sad Explorer."/>
       <h1>Maintenance</h1>
-      <p>Bulwark Explorer is not available at this moment.<br/>Please check back later.</p><br/>
-  <a href="https://bulwarkcrypto.com/" class="button">Back to Main</a>
+      <p>Phore Explorer is not available at this moment.<br/>Please check back later.</p><br/>
+  <a href="https://phore.io/" class="button">Back to Main</a>
       </div>
   </body>
 </html>
@@ -97,7 +97,7 @@ a {
 });
 // Start the server.
 app.listen(config.api.port, () => {
-  console.log(`BlocEx running on port ${ config.api.port }`);
+  console.log(`Phore Explorer running on port ${ config.api.port }`);
 });
 
 // Export for testing.

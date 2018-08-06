@@ -35,11 +35,17 @@ const getAddress = async (req, res) => {
       ])
       .allowDiskUse(true)
       .exec();
+    if ( req.params.hash === 'ZEROCOIN_MINT_POOL' ) {
+      const balance = 0.0;
+      const received = 0.0;
 
-    const balance = utxo.reduce((acc, tx) => acc + tx.value, 0.0);
-    const received = txs.reduce((acc, tx) => acc + tx.vout.reduce((a, t) => a + t.value, 0.0), 0.0);
+      res.json({ balance, received, txs, utxo });
+    } else {
+      const balance = utxo.reduce((acc, tx) => acc + tx.value, 0.0);
+      const received = txs.reduce((acc, tx) => acc + tx.vout.reduce((a, t) => a + t.value, 0.0), 0.0);
 
-    res.json({ balance, received, txs, utxo });
+      res.json({ balance, received, txs, utxo });
+    }
   } catch(err) {
     console.log(err);
     res.status(500).send(err.message || err);
