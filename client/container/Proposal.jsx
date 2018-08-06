@@ -29,8 +29,8 @@ class Proposal extends Component {
         { key: 'name', title: 'Name' },
         { key: 'url', title: 'URL' },
         { key: 'address', title: 'Address' },
-        { key: 'total_amount', title: 'Total' },
         { key: 'monthly_amount', title: 'Monthly' },
+        { key: 'total_amount', title: 'Total' },
         { key: 'end_height', title: 'End Block' },
         { key: 'score', title: 'Votes' },
       ],
@@ -100,6 +100,7 @@ class Proposal extends Component {
         <HorizontalRule
           select={ select }
           title="Proposals" />
+        <p>If score is more than 10% of count of masternode, the proposal will pass.<br></p>
         <Table
           cols={ this.state.cols }
           data={ this.state.prs.map((pr) => ({
