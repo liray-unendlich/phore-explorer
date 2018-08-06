@@ -8,7 +8,6 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import sortBy from 'lodash/sortBy';
-import { Button } from 'react-boostrap';
 
 import HorizontalRule from '../component/HorizontalRule';
 import Pagination from '../component/Pagination';
