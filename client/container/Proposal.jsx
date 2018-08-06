@@ -29,9 +29,9 @@ class Proposal extends Component {
         { key: 'name', title: 'Name' },
         { key: 'url', title: 'URL' },
         { key: 'address', title: 'Address' },
-        // { key: 'status', title: 'Status' },
         { key: 'total_amount', title: 'Total' },
         { key: 'monthly_amount', title: 'Monthly' },
+        { key: 'end_height', title: 'End block' },
       ],
       error: null,
       loading: true,
@@ -105,9 +105,9 @@ class Proposal extends Component {
             return {
               ...pr,
               url: (
-                <Link to={ `${ pr.url }` }>
+                <a href={pr.url} target="_blank">
                   {`${ pr.url.substr(0, 20) }...` }
-                </Link>
+                </a>
               ),
               address: (
                 <Link to={ `/address/${ pr.address }` }>
@@ -115,7 +115,7 @@ class Proposal extends Component {
                 </Link>
               )
             };
-          }), ['name'])} />
+          }), ['end_height'])} />
         <Pagination
           current={ this.state.page }
           className="float-right"
