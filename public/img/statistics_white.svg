@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" enable-background="new 0 0 48 48"><style type="text/css">.st0{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st2{fill:#FFFFFF;stroke:#FFFFFF;stroke-miterlimit:10;}</style><path class="st0" d="M3 3v41c0 .6.4 1 1 1h41m-42-28l13.7 12 13.7-12 13.6 12"/><ellipse class="st1" cx="30.5" cy="17.3" rx="1.9" ry="2"/><circle class="st2" cx="16.9" cy="28.3" r="2"/><circle class="st1" cx="42.9" cy="28.3" r="2"/></svg>
+<!--?xml version="1.0" encoding="utf-8"?-->
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="width: 256px; height: 256px; opacity: 1;" xml:space="preserve">
+<style type="text/css">
+
+	.st0{fill:#4B4B4B;}
+
+</style>
+<g>
+	<path class="st0" d="M112,412.016c21,0,38.016-17.016,38.016-38.016c0-10.063-3.984-19.172-10.391-25.969l74.5-121.688
+		c3.375,0.984,6.859,1.672,10.531,1.672c6.156,0,11.906-1.609,17.047-4.203l55.688,61.719c-3.797,5.922-6.078,12.922-6.078,20.469
+		c0,21,17.031,38.031,38.031,38.031c20.984,0,38-17.031,38-38.031c0-10.625-4.375-20.219-11.438-27.125l77.016-138.063
+		c2.922,0.719,5.922,1.203,9.078,1.203c21,0,38.016-17.016,38.016-38.016S463,65.984,442,65.984S403.984,83,403.984,104
+		c0,10.625,4.391,20.219,11.438,27.125l-77.016,138.078c-2.906-0.719-5.922-1.203-9.063-1.203c-6.156,0-11.906,1.594-17.047,4.188
+		l-55.688-61.719c3.797-5.906,6.078-12.906,6.078-20.469c0-21-17.031-38.016-38.031-38.016c-20.984,0-38,17.016-38,38.016
+		c0,10.063,3.984,19.172,10.375,25.969l-74.5,121.688c-3.375-0.984-6.844-1.672-10.531-1.672C91,335.984,73.984,353,73.984,374
+		S91,412.016,112,412.016z" style="fill: rgb(255, 255, 255);"></path>
+	<polygon class="st0" points="24,488 24,0 0,0 0,512 512,512 512,488 	" style="fill: rgb(255, 255, 255);"></polygon>
+</g>
+</svg>
