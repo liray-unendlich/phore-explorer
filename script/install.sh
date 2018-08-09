@@ -99,8 +99,8 @@ After=network.target
 Type=forking
 User=explorer
 WorkingDirectory=/home/explorer
-ExecStart=/home/explorer/bin/phored -datadir=/home/explorer/.phore
-ExecStop=/home/explorer/bin/phore-cli -datadir=/home/explorer/.phore stop
+ExecStart=/usr/local/bin/phored -datadir=/home/explorer/.phore
+ExecStop=/usr/local/bin/phore-cli -datadir=/home/explorer/.phore stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
@@ -112,7 +112,7 @@ EOL
     clear
 }
 
-installBlockEx () {
+installBlockExplorer () {
     echo "Installing BlockExplorer..."
     git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/phore-explorer
     cd /home/explorer/phore-explorer
@@ -191,16 +191,18 @@ clear
 # Check for blockex folder, if found then update, else install.
 if [ ! -d "/home/explorer/phore-explorer" ]
 then
-    installNginx
-    installMongo
-    installPhore
-    installNodeAndYarn
-    installBlockEx
-    echo "Finished installation!"
+  mkdir -p /home/explorer/install_log/
+  installNginx >> /home/explorer/install_log/nginx.log
+  installMongo >> /home/explorer/install_log/mongo.log
+  installPhore >> /home/explorer/install_log/phore.log
+  installNodeAndYarn >> /home/explorer/install_log/node.log
+  installBlockExplorer >> /home/explorer/install_log/explorer.log
+  echo "Finished installation!"
+  echo "All log within installation is in /home/explorer/install_log/"
 else
     cd /home/explorer/phore-explorer
     git pull
     pm2 restart index
-    echo "BlockEx updated!"
+    echo "BlockExplorer updated!"
 fi
 
