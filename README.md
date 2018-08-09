@@ -30,6 +30,16 @@ I fixed bulwark daemon install script to phore.
 
 This will install the latest phore wallet and create a rpc username/password before starting the daemon.
 
+I made, fixed install.sh in script.
+You can use this for installation of phore-explorer.
+
+`curl -s https://raw.githubusercontent.com/liray-unendlich/phore-explorer/master/script/install.sh | bash`
+
+Required: Username "explorer", 1Hour to run this script
+
+You will need to wait 1 hour because this script will start update js automatically.
+So you need to load blockchain data with phored.
+
 ## Install
 `git clone https://github.com/liray-unendlich/phore-explorer.git` - copy repo to local folder.
 
@@ -113,6 +123,12 @@ https://yarnpkg.com/lang/en/docs/install/
 `bash script/phored_setup.sh`
 
 このコマンドによりRPCユーザー名/パスワードを設定しPhoreデーモンを起動できます。
+
+さらに
+`curl -s https://raw.githubusercontent.com/liray-unendlich/phore-explorer/master/script/install.sh | bash`
+をコンソールに入れることで直接インストールできるようにした。このスクリプトはphoredを含む必要なものを全てダウンロード・インストールするものです。
+ただ、ユーザーとして explorer という名前のユーザーを作成する必要があります。
+
 
 ## インストール
 `git clone https://github.com/liray-unendlich/phore-explorer.git` - レポをダウンロード
