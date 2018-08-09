@@ -1,8 +1,7 @@
 #!/bin/bash
 # Download latest node and install.
-phrlink=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep browser_download_url | grep linux-gnu | cut -d '"' -f 4`
-phrver=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep tag_name`
-ver=${phrver:16:5}
+phrlink=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep browser_download_url | grep x86_64-linux-gnu | cut -d '"' -f 4`
+phrver=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep tag_name | cut -c 17-21`
 mkdir -p /tmp/phore
 cd /tmp/phore
 curl -Lo phore.tar.gz $phrlink
