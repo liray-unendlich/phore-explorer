@@ -79,7 +79,6 @@ installPhore () {
     cd /tmp/phore
     curl -Lo phore.tar.gz $phrlink
     tar -xzf phore.tar.gz
-    sudo chmod +x phore-${phrver}/bin/*
     sudo mv phore-${phrver}/bin/* /usr/local/bin
     cd
     rm -rf /tmp/phore
@@ -90,6 +89,75 @@ rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 daemon=1
 txindex=1
+staking=0
+listen=1
+server=1
+addnode=1.43.118.91
+addnode=103.217.166.63
+addnode=104.14.148.127
+addnode=104.156.229.204
+addnode=104.238.144.108
+addnode=104.238.144.67
+addnode=104.238.184.178
+addnode=107.191.55.244
+addnode=111.107.151.41
+addnode=144.202.34.83
+addnode=149.28.117.225
+addnode=149.28.167.27
+addnode=155.94.154.176
+addnode=156.67.127.246
+addnode=163.172.161.150
+addnode=173.199.122.209
+addnode=173.88.114.199
+addnode=178.22.70.41
+addnode=185.233.105.46
+addnode=194.228.11.75
+addnode=199.247.28.44
+addnode=199.247.8.233
+addnode=207.148.11.27
+addnode=207.246.102.58
+addnode=207.246.70.5
+addnode=207.246.76.98
+addnode=212.47.226.127
+addnode=213.152.162.5
+addnode=217.235.183.11
+addnode=217.99.250.102
+addnode=24.126.123.16
+addnode=37.221.196.161
+addnode=45.32.56.14
+addnode=45.63.105.43
+addnode=45.76.46.249
+addnode=45.77.0.228
+addnode=45.77.191.205
+addnode=45.77.207.83
+addnode=45.77.79.247
+addnode=45.79.68.234
+addnode=46.232.248.122
+addnode=46.232.248.132
+addnode=46.232.248.157
+addnode=46.232.248.162
+addnode=46.232.248.205
+addnode=46.232.248.233
+addnode=46.232.248.64
+addnode=46.232.248.81
+addnode=46.232.249.10
+addnode=46.232.251.71
+addnode=46.38.239.232
+addnode=47.145.52.144
+addnode=5.51.8.11
+addnode=5.83.18.254
+addnode=62.77.159.162
+addnode=72.65.59.251
+addnode=73.14.175.152
+addnode=74.208.124.203
+addnode=74.57.24.54
+addnode=78.162.217.62
+addnode=78.162.249.209
+addnode=79.131.189.94
+addnode=88.71.35.102
+addnode=92.233.124.175
+addnode=94.16.117.52
+addnode=94.60.85.88
 EOL
     sudo cat > /etc/systemd/system/phored.service << EOL
 [Unit]
@@ -108,7 +176,7 @@ EOL
     sudo systemctl start phored
     sudo systemctl enable phored
     echo "Sleeping for 1 hour while node syncs blockchain..."
-    sleep 10s
+    sleep 1h
     clear
 }
 
