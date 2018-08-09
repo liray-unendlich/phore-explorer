@@ -79,7 +79,7 @@ installPhore () {
     cd /tmp/phore
     curl -Lo phore.tar.gz $phrlink
     tar -xzf phore.tar.gz
-    sudo chmod +x phore-${phrvar}/bin/*
+    sudo chmod +x phore-${phrver}/bin/*
     sudo mv phore-${phrver}/bin/* /usr/local/bin
     cd
     rm -rf /tmp/phore
@@ -117,7 +117,7 @@ installBlockExplorer () {
     git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/phore-explorer
     cd /home/explorer/phore-explorer
     yarn install
-    cat > /home/explorer/blockex/config.js << EOL
+    cat > /home/explorer/phore-explorer/config.js << EOL
 const config = {
   'api': {
     'host': 'http://127.0.0.1',
