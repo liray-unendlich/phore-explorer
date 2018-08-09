@@ -2,12 +2,10 @@
 
 installNodeAndYarn () {
     echo "Installing nodejs and yarn..."
-    sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs npm
-    sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo apt-get update -y
-    sudo apt-get install -y yarn
+    sudo npm install -g yarn
     sudo npm install -g pm2
     clear
 }
@@ -81,6 +79,7 @@ installPhore () {
     cd /tmp/phore
     curl -Lo phore.tar.gz $phrlink
     tar -xzf phore.tar.gz
+    sudo chmod +x phore-${phrvar}/bin/*
     sudo mv phore-${phrver}/bin/* /usr/local/bin
     cd
     rm -rf /tmp/phore
