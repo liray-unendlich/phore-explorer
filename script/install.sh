@@ -9,8 +9,6 @@ installNodeAndYarn () {
     sudo apt-get update -y
     sudo apt-get install -y yarn
     sudo npm install -g pm2
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
-    sudo chown -R explorer:explorer /home/explorer/.config
     clear
 }
 
@@ -25,8 +23,8 @@ server {
 
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
-    #server_name explorer.bulwarkcrypto.com;
-    server_name _;
+    #server_name explorer;
+    server_name phore-explorer;
 
     gzip on;
     gzip_static on;
@@ -51,23 +49,13 @@ server {
 
     #listen [::]:443 ssl ipv6only=on; # managed by Certbot
     #listen 443 ssl; # managed by Certbot
-    #ssl_certificate /etc/letsencrypt/live/explorer.bulwarkcrypto.com/fullchain.pem; # managed by Certbot
-    #ssl_certificate_key /etc/letsencrypt/live/explorer.bulwarkcrypto.com/privkey.pem; # managed by Certbot
-    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
+  }
 
-#server {
-#    if ($host = explorer.bulwarkcrypto.com) {
-#        return 301 https://\$host\$request_uri;
-#    } # managed by Certbot
-#
-#	listen 80 default_server;
-#	listen [::]:80 default_server;
-#
-#	server_name explorer.bulwarkcrypto.com;
-#   return 404; # managed by Certbot
-#}
+  #server {
+    #	listen 80 default_server;
+    #	listen [::]:80 default_server;
+    #
+    #}
 EOL
     sudo systemctl start nginx
     sudo systemctl enable nginx
@@ -93,7 +81,7 @@ installPhore () {
     cd /tmp/phore
     curl -Lo phore.tar.gz $phrlink
     tar -xzf phore.tar.gz
-    sudo mv ./bin/* /usr/local/bin
+    sudo mv phore-${ver}/bin/* /usr/local/bin
     cd
     rm -rf /tmp/phore
     mkdir -p /home/explorer/.phore
@@ -127,8 +115,8 @@ EOL
 
 installBlockEx () {
     echo "Installing BlockExplorer..."
-    git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/blockex
-    cd /home/explorer/blockex
+    git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/phore-explorer
+    cd /home/explorer/phore-explorer
     yarn install
     cat > /home/explorer/blockex/config.js << EOL
 const config = {
@@ -163,18 +151,18 @@ const config = {
 
 module.exports = config;
 EOL
-    nodejs ./cron/block.js
-    nodejs ./cron/coin.js
-    nodejs ./cron/masternode.js
-    nodejs ./cron/peer.js
-    nodejs ./cron/rich.js
+    node ./cron/block.js
+    node ./cron/coin.js
+    node ./cron/masternode.js
+    node ./cron/peer.js
+    node ./cron/rich.js
     clear
     cat > mycron << EOL
-*/1 * * * * cd /home/explorer/blockex && ./script/cron_block.sh >> ./tmp/block.log 2>&1
-*/1 * * * * cd /home/explorer/blockex && /usr/bin/nodejs ./cron/masternode.js >> ./tmp/masternode.log 2>&1
-*/1 * * * * cd /home/explorer/blockex && /usr/bin/nodejs ./cron/peer.js >> ./tmp/peer.log 2>&1
-*/1 * * * * cd /home/explorer/blockex && /usr/bin/nodejs ./cron/rich.js >> ./tmp/rich.log 2>&1
-*/5 * * * * cd /home/explorer/blockex && /usr/bin/nodejs ./cron/coin.js >> ./tmp/coin.log 2>&1
+*/1 * * * * cd /home/explorer/phore-explorer && ./script/cron_block.sh >> ./tmp/block.log 2>&1
+*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/masternode.js >> ./tmp/masternode.log 2>&1
+*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/peer.js >> ./tmp/peer.log 2>&1
+*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/rich.js >> ./tmp/rich.log 2>&1
+*/5 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/coin.js >> ./tmp/coin.log 2>&1
 EOL
     crontab mycron
     rm -f mycron
@@ -193,6 +181,8 @@ echo "Setting up variables..."
 phrlink=`curl -s https://api.github.com/repos/phoreproject/phore/releases/latest | grep browser_download_url | grep linux-gnu | cut -d '"' -f 4`
 rpcuser=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 rpcpassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
+phrver=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep tag_name`
+ver=${phrver:16:5}
 echo "Repo: $phrlink"
 echo "PWD: $PWD"
 echo "User: $rpcuser"
@@ -201,7 +191,7 @@ sleep 5s
 clear
 
 # Check for blockex folder, if found then update, else install.
-if [ ! -d "/home/explorer/blockex" ]
+if [ ! -d "/home/explorer/phore-explorer" ]
 then
     installNginx
     installMongo
@@ -210,7 +200,7 @@ then
     installBlockEx
     echo "Finished installation!"
 else
-    cd /home/explorer/blockex
+    cd /home/explorer/phore-explorer
     git pull
     pm2 restart index
     echo "BlockEx updated!"
