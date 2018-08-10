@@ -101,6 +101,12 @@ At this time only the client web interface needs to be built using webpack and t
 
 `yarn run test:server` - will test the rpc connection, database connection, and api endpoints.
 
+
+## TODO
+- Add blocknumber index to masternode count
+- Add check whether proposal is passed
+- Add overview box about count each version of node
+
 ## In Japanese
 
 Block Explorer(マスターノード/Zerocoin対応)
