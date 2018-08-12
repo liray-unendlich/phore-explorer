@@ -3,8 +3,8 @@
 installNodeAndYarn () {
     echo "Installing nodejs and yarn..."
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    sudo apt-get install -y nodejs npm
-    sudo apt-get update -y
+    sudo apt-get install -qqy nodejs npm
+    sudo apt-get update -qqy
     sudo npm install -g yarn
     sudo npm install -g pm2
     clear
@@ -190,9 +190,9 @@ EOL
 installBlockExplorer () {
     echo "Installing BlockExplorer..."
     git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/phore-explorer
-    cd /home/explorer/phore-explorer
+    cd ${dir}/phore-explorer
     yarn install
-    cat > /home/explorer/phore-explorer/config.js << EOL
+    cat > ${dir}/phore-explorer/config.js << EOL
 const config = {
   'api': {
     'host': 'http://${ipaddr}',
@@ -232,11 +232,11 @@ EOL
     node ./cron/rich.js
     clear
     cat > mycron << EOL
-*/1 * * * * cd /home/explorer/phore-explorer && ./script/cron_block.sh >> ./tmp/block.log 2>&1
-*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/masternode.js >> ./tmp/masternode.log 2>&1
-*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/peer.js >> ./tmp/peer.log 2>&1
-*/1 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/rich.js >> ./tmp/rich.log 2>&1
-*/5 * * * * cd /home/explorer/phore-explorer && /usr/bin/node ./cron/coin.js >> ./tmp/coin.log 2>&1
+*/1 * * * * cd ${dir}/phore-explorer && ./script/cron_block.sh >> ./tmp/block.log 2>&1
+*/1 * * * * cd ${dir}/phore-explorer && /usr/bin/node ./cron/masternode.js >> ./tmp/masternode.log 2>&1
+*/1 * * * * cd ${dir}/phore-explorer && /usr/bin/node ./cron/peer.js >> ./tmp/peer.log 2>&1
+*/1 * * * * cd ${dir}/phore-explorer && /usr/bin/node ./cron/rich.js >> ./tmp/rich.log 2>&1
+*/5 * * * * cd ${dir}/phore-explorer && /usr/bin/node ./cron/coin.js >> ./tmp/coin.log 2>&1
 EOL
     crontab mycron
     rm -f mycron
