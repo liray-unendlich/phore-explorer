@@ -14,7 +14,8 @@ installNginx () {
     echo "Installing nginx..."
     sudo apt-get install -y nginx
     sudo rm -f /etc/nginx/sites-available/default
-    sudo cat > /etc/nginx/sites-available/default << EOL
+    mkdir -p /tmp/service/
+    cat > /tmp/nginx.conf << EOL
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -55,6 +56,7 @@ server {
     #
     #}
 EOL
+    sudo mv /tmp/nginx.conf /etc/nginx/sites-available/default
     sudo systemctl start nginx
     sudo systemctl enable nginx
     clear
@@ -64,16 +66,19 @@ installMongo () {
     echo "Installing mongodb..."
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
     sudo echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-    sudo apt-get update -y
-    sudo apt-get install -y --allow-unauthenticated mongodb-org
-    sudo chown -R mongodb:mongodb /data/db
+    sudo apt-get update -qqy
+    sudo apt-get install -qqy --allow-unauthenticated mongodb-org
     sudo systemctl start mongod
     sudo systemctl enable mongod
     mongo blockex --eval "db.createUser( { user: \"$rpcuser\", pwd: \"$rpcpassword\", roles: [ \"readWrite\" ] } )"
-    clear
+    echo "Finished mongo installation!"
 }
 
 installPhore () {
+  if [ ${inphr} -eq 1 ]
+  then
+    return
+  else
     echo "Installing Phore..."
     mkdir -p /tmp/phore
     cd /tmp/phore
@@ -82,8 +87,8 @@ installPhore () {
     sudo mv phore-${phrver}/bin/* /usr/local/bin
     cd
     rm -rf /tmp/phore
-    mkdir -p /home/explorer/.phore
-    cat > /home/explorer/.phore/phore.conf << EOL
+    mkdir -p ${dir}/.phore
+    cat > ${dir}/.phore/phore.conf << EOL
 rpcport=11772
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
@@ -159,7 +164,7 @@ addnode=92.233.124.175
 addnode=94.16.117.52
 addnode=94.60.85.88
 EOL
-    sudo cat > /etc/systemd/system/phored.service << EOL
+    cat > /tmp/phored.service << EOL
 [Unit]
 Description=phored
 After=network.target
@@ -173,11 +178,13 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOL
+    sudo mv /tmp/phored.service /etc/systemd/system/
     sudo systemctl start phored
     sudo systemctl enable phored
     echo "Sleeping for 1 hour while node syncs blockchain..."
     sleep 1h
-    clear
+    echo "Finished Phore daemon installation!"
+  fi
 }
 
 installBlockExplorer () {
@@ -188,7 +195,7 @@ installBlockExplorer () {
     cat > /home/explorer/phore-explorer/config.js << EOL
 const config = {
   'api': {
-    'host': 'http://127.0.0.1',
+    'host': 'http://${ipaddr}',
     'port': '3000',
     'prefix': '/api',
     'timeout': '180s'
@@ -239,36 +246,63 @@ EOL
 
 # Setup
 echo "Updating system..."
-sudo apt-get update -y
-sudo apt-get install -y apt-transport-https build-essential cron curl gcc git g++ make sudo vim wget
-clear
+sudo apt-get update -qqy
+sudo apt-get install -qqy jq apt-transport-https build-essential cron curl gcc git g++ make sudo vim wget
+sudo "Complete updating!"
 
 # Variables
 echo "Setting up variables..."
-phrlink=`curl -s https://api.github.com/repos/phoreproject/phore/releases/latest | grep browser_download_url | grep x86_64-linux-gnu | cut -d '"' -f 4`
-rpcuser=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
-rpcpassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
-phrver=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep tag_name | cut -c 17-21`
+ipaddr=$(curl -s inet-ip.info)
+if [ -n $(which phored) ]
+then
+  block=$(phore-cli getblockchaininfo | jq .blocks)
+  header=$(phore-cli getblockchaininfo | jq .headers)
+  inphr=0
+  rpcuser=$(grep "rpcuser" .phore/phore.conf | cut -c 9-100)
+  rpcpassword=$(grep "rpcpassword" .phore/phore.conf | cut -c 13-100)
+  if [ ${block} = ${header} ]
+  then
+    echo "Your phored is fully synced."
+  else
+    echo "You need to wait fully syncing. Wait a moment."
+    exit
+  fi
+else
+  echo "You didn't install phore daemon. We will install it."
+  phrlink=`curl -s https://api.github.com/repos/phoreproject/phore/releases/latest | grep browser_download_url | grep x86_64-linux-gnu | cut -d '"' -f 4`
+  rpcuser=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
+  rpcpassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
+  phrver=`curl -s https://api.github.com/repos/phoreproject/Phore/releases/latest | grep tag_name | cut -c 17-21`
+  inphr=1
+fi
 echo "Repo: $phrlink"
 echo "PWD: $PWD"
 echo "User: $rpcuser"
 echo "Pass: $rpcpassword"
+echo "IP address: ${ipaddr}"
 sleep 5s
-clear
 
 # Check for blockex folder, if found then update, else install.
-if [ ! -d "/home/explorer/phore-explorer" ]
+
+USERNAME=$(whoami)
+if [ ${USERNAME} == "root"]
 then
-  mkdir -p /home/explorer/install_log/
-  installNginx >> /home/explorer/install_log/nginx.log
-  installMongo >> /home/explorer/install_log/mongo.log
-  installPhore >> /home/explorer/install_log/phore.log
-  installNodeAndYarn >> /home/explorer/install_log/node.log
-  installBlockExplorer >> /home/explorer/install_log/explorer.log
-  echo "Finished installation!"
-  echo "All log within installation is in /home/explorer/install_log/"
+  dir="/root"
 else
-    cd /home/explorer/phore-explorer
+  dir="/home"${USERNAME}
+fi
+if [ ! -d ${dir}"/phore-explorer" ]
+then
+  mkdir -p ${dir}/install_log/
+  installNginx >> ${dir}/install_log/nginx.log
+  installMongo >> ${dir}/install_log/mongo.log
+  installPhore >> ${dir}/install_log/phore.log
+  installNodeAndYarn >> ${dir}/install_log/node.log
+  installBlockExplorer >> ${dir}/install_log/explorer.log
+  echo "Finished installation!"
+  echo "All log within installation is in ${dir}/install_log/"
+else
+    cd ${dir}/phore-explorer
     git pull
     pm2 restart index
     echo "BlockExplorer updated!"
