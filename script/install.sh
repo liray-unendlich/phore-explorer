@@ -3,7 +3,7 @@
 installNodeAndYarn () {
     echo "Installing nodejs and yarn..."
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-    sudo apt-get install -qqy nodejs npm
+    sudo apt-get install -y nodejs
     sudo apt-get update -qqy
     sudo npm install -g yarn
     sudo npm install -g pm2
@@ -189,9 +189,10 @@ EOL
 
 installBlockExplorer () {
     echo "Installing BlockExplorer..."
-    git clone https://github.com/liray-unendlich/phore-explorer.git /home/explorer/phore-explorer
+    cd ${dir}
+    git clone https://github.com/liray-unendlich/phore-explorer.git
     cd ${dir}/phore-explorer
-    yarn install
+    sudo yarn install
     cat > ${dir}/phore-explorer/config.js << EOL
 const config = {
   'api': {
@@ -287,7 +288,7 @@ sleep 5s
 USERNAME=$(whoami)
 if [ ${USERNAME} == "root" ]
 then
-  dir="/root"
+  dir="/root/"
 else
   dir="/home/"${USERNAME}
 fi
