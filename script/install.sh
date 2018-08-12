@@ -248,7 +248,7 @@ EOL
 echo "Updating system..."
 sudo apt-get update -qqy
 sudo apt-get install -qqy jq apt-transport-https build-essential cron curl gcc git g++ make sudo vim wget
-sudo "Complete updating!"
+echo "Complete updating!"
 
 # Variables
 echo "Setting up variables..."
