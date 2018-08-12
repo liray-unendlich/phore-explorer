@@ -285,11 +285,11 @@ sleep 5s
 # Check for blockex folder, if found then update, else install.
 
 USERNAME=$(whoami)
-if [ ${USERNAME} == "root"]
+if [ ${USERNAME} == "root" ]
 then
   dir="/root"
 else
-  dir="/home"${USERNAME}
+  dir="/home/"${USERNAME}
 fi
 if [ ! -d ${dir}"/phore-explorer" ]
 then
