@@ -38,7 +38,7 @@ export default class CardStatus extends Component {
 
     return (
       <div className="animated fadeInUp">
-      <Card className="card--market" title="Market">
+      <Card className="card--market" title="市場">
         <p className="card__data-main bariol">
           <CountUp
             decimals={ 2 }
@@ -57,9 +57,9 @@ export default class CardStatus extends Component {
                 <Icon className="card__icon--arrow" name={ dirArrow } />
                 <span>{ numeral(growth * 100.0).format('0,0.00') }% &nbsp;</span>
               </span>
-              <span>In { this.props.xAxis.length * 5 } minutes</span>
+              <span>{ this.props.xAxis.length * 5 } 分で</span>
             </p>
-            <p className="card__info-source">Data from CoinMarketCap</p>
+            <p className="card__info-source">CoinMarketCapのデータより</p>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-8">
             <GraphLine

@@ -4,8 +4,8 @@ import React from 'react';
 import Card from './Card';
 
 const CardLinks = () => (
-  <Card title="Links">
-    <a href="https://phore.io/" target="_blank">Website</a><br />
+  <Card title="リンク集">
+    <a href="https://phore.io/" target="_blank">ウェブサイト</a><br />
     <a href="https://bitcointalk.org/index.php?topic=2307909.0" target="_blank">Bitcointalk</a><br />
     <a href="https://github.com/phoreproject" target="_blank">Github</a><br />
     <a href="https://www.reddit.com/r/PhoreProject/" target="_blank">Reddit</a><br />

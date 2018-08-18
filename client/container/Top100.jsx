@@ -24,9 +24,9 @@ class Top100 extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'index', title: '#' },
-        { key: 'address', title: 'Address' },
-        { key: 'value', title: 'Total' },
+        { key: 'index', title: '順位' },
+        { key: 'address', title: 'アドレス' },
+        { key: 'value', title: '枚数' },
         { key: 'percent', title: '%' },
       ],
       wallets: []
@@ -40,7 +40,7 @@ class Top100 extends Component {
   render() {
     return (
       <div>
-        <HorizontalRule title="Top 100" />
+        <HorizontalRule title="トップ100" />
         <Table
           cols={ this.state.cols }
           data={ this.state.wallets.map((wallet, idx) => ({

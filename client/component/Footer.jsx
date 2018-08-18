@@ -34,25 +34,25 @@ class Footer extends Component {
         <div className="footer__block">
           <div className="footer__data-wrapper">
             <div className="footer__data-block">
-              <p className="footer__data-title">Status</p>
+              <p className="footer__data-title">ステータス</p>
               <p>
                 <span className={ `u__dot u--text-${ statusColor }` }>&bull;</span>
                 <span>{ coin.status }</span>
               </p>
             </div>
             <div className="footer__data-block">
-              <p className="footer__data-title">Blocks</p>
+              <p className="footer__data-title">ブロック数</p>
               <p><b>{ blocks }</b></p>
             </div>
             <div className="footer__data-block">
-              <p className="footer__data-title">Time</p>
+              <p className="footer__data-title">時刻</p>
               <p>{ `${ moment().utc().format('HH:mm') }  UTC`}</p>
             </div>
           </div>
         </div>
         <div className="footer__block">
           <div className="footer__social-media-wrapper">
-            <div className="footer__social-title">Social Media</div>
+            <div className="footer__social-title">ソーシャル</div>
             <div>
               <a href="https://bitcointalk.org/index.php?topic=2307909.0" target="_blank">
                 <Icon name="bitcoin" className="fab footer__social-media-icon" />

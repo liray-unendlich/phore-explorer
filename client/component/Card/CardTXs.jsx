@@ -22,10 +22,10 @@ export default class CardTXs extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'blockHeight', title: 'Block Height' },
-        { key: 'txId', title: 'Transaction Hash' },
-        { key: 'vout', title: 'Amount' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'blockHeight', title: 'ブロック数' },
+        { key: 'txId', title: 'トランザクションハッシュ' },
+        { key: 'vout', title: '枚数' },
+        { key: 'createdAt', title: '時刻' },
       ]
     };
   };

@@ -45,7 +45,7 @@ class PoS extends Component {
       const { mn, pos } = this.getRewardSplit(amount);
       this.setState({ amount, mn, pos });
     } else {
-      this.setState({ error: 'Please provide an amount for staking calculations.' });
+      this.setState({ error: 'ステーキングする枚数を入力してください。' });
     }
   };
 
@@ -174,33 +174,32 @@ class PoS extends Component {
 
     return (
       <div>
-        <HorizontalRule title="PoS Calculations" />
+        <HorizontalRule title="ステーキング計算機" />
         <p>
-          Please note the following estimations are based on current block height,
-          average block time, average masternode reward time, and current block reward schedule.
+          注意: この概算は現在のブロック数、ブロック平均時間、マスターノードの平均報酬時間、ブロック報酬の予定に基づいています。
         </p>
         <br />
         <div className="row">
           <div className="col-sm-4">
-            <b>Block Subsidy:</b>
+            <b>ブロック報酬:</b>
           </div>
           <div className="col-sm-8">
             { numeral(vX.subsidy).format('0,0.0000') } PHR
           </div>
           <div className="col-sm-4">
-            <b>PoS:</b>
+            <b>ステーキング:</b>
           </div>
           <div className="col-sm-8">
             { numeral(vX.posSubsidy).format('0,0.0000') } PHR
           </div>
           <div className="col-sm-4">
-            <b>Masternode:</b>
+            <b>マスターノード:</b>
           </div>
           <div className="col-sm-8">
             { numeral(vX.mnSubsidy).format('0,0.0000') } PHR
           </div>
           <div className="col-sm-4">
-            <b>Calculation Amount:</b>
+            <b>計算する枚数:</b>
           </div>
           <div className="col-sm-8">
             { numeral(this.state.amount).format('0,0.0000') } PHR
@@ -210,7 +209,7 @@ class PoS extends Component {
         <br />
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Masternode(s):
+            マスターノード:
           </div>
           <div className="col-sm-12 col-md-2">
             { this.renderMasternodeCount() }
@@ -222,21 +221,21 @@ class PoS extends Component {
         <div className="row">
           <div className="col-sm-12 col-md-4"></div>
           <div className="col-sm-12 col-md-2">
-            <small className="text-gray">X</small>
+            <small className="text-gray">現在</small>
           </div>
           <div className="col-sm-12 col-md-2">
-            <small className="text-gray">Day</small>
+            <small className="text-gray">日</small>
           </div>
           <div className="col-sm-12 col-md-2">
-            <small className="text-gray">Week</small>
+            <small className="text-gray">週</small>
           </div>
           <div className="col-sm-12 col-md-2">
-            <small className="text-gray">Month</small>
+            <small className="text-gray">月</small>
           </div>
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Masternode Amount (PHR):
+            マスターノードの枚数(PHR):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.mn).format('0,0.0000') }
@@ -247,7 +246,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Masternode Reward Interval (Hours):
+            マスターノード平均報酬時間(時間):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.mnHours).format('0,0.00') }
@@ -258,7 +257,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Masternode Reward (PHR):
+            マスターノード報酬(PHR):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.mnSubsidy * mns).format('0,0.0000') }
@@ -276,7 +275,7 @@ class PoS extends Component {
         <br />
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            PoS Amount (PHR):
+            ステーキング枚数 (PHR):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.pos).format('0,0.0000') }
@@ -287,7 +286,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            PoS Reward Interval (Hours):
+            ステーキング平均報酬時間 (時間):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.posHours).format('0,0.00') }
@@ -298,7 +297,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            PoS Reward (PHR):
+            ステーキング報酬(PHR):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.posSubsidy).format('0,0.0000') }
@@ -317,7 +316,7 @@ class PoS extends Component {
         <br />
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Total Amount (PHR):
+            合計報酬(PHR):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral(vX.mnSubsidy * mns + vX.posSubsidy).format('0,0.0000') }
@@ -334,7 +333,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            Total Amount (USD):
+            合計(USD):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral((vX.mnSubsidy * mns + vX.posSubsidy) * this.props.coin.usd).format('$0,0.00') }

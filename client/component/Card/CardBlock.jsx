@@ -20,11 +20,11 @@ export default class CardBlock extends Component {
       <div className="animated fadeIn">
       <div className="card--block">
         <div className="card__row">
-          <span className="card__label">Hash:</span>
+          <span className="card__label">ハッシュ:</span>
           <span className="card__result">{ this.props.block.hash }</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Height:</span>
+          <span className="card__label">ブロック数:</span>
           <span className="card__result">{ this.props.block.height }</span>
         </div>
         <div className="card__row">
@@ -32,7 +32,7 @@ export default class CardBlock extends Component {
           <span className="card__result">{ this.props.block.diff }</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Confirmations:</span>
+          <span className="card__label">確認数:</span>
           <span className="card__result">
             <span className="badge badge-success">
               { this.props.height - this.props.block.height }
@@ -40,7 +40,7 @@ export default class CardBlock extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Size (kB):</span>
+          <span className="card__label">容量 (kB):</span>
           <span className="card__result">{ this.props.block.size / 1024 }</span>
         </div>
         <div className="card__row">
@@ -52,7 +52,7 @@ export default class CardBlock extends Component {
           <span className="card__result">{ this.props.block.nonce }</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Timestamp:</span>
+          <span className="card__label">タイムスタンプ:</span>
           <span className="card__result">
             { dateFormat(this.props.block.createdAt) }
           </span>

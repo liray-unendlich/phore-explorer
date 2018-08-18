@@ -1,12 +1,12 @@
 const MenuData = [
-  {label: 'Overview', icon: '/img/home.svg', href: '/'},
-  {label: 'Movement', icon: '/img/movement.svg', href: '/movement'},
-  {label: 'Top 100', icon: '/img/top100.svg', href: '/top'},
-  {label: 'Masternode', icon: '/img/masternodes.svg', href: '/masternode'},
-  {label: 'Proposal', icon: '/img/proposals.svg', href: '/proposal'},
-  {label: 'Connections', icon: '/img/connections.svg', href: '/peer'},
-  {label: 'Statistics', icon: '/img/statistics.svg', href: '/statistics'},
-  {label: 'Coin Info', icon: '/img/coininfo.svg', href: '/coin'},
+  {label: 'ホーム', icon: '/img/home.svg', href: '/'},
+  {label: 'トランザクション', icon: '/img/movement.svg', href: '/movement'},
+  {label: 'トップ100', icon: '/img/top100.svg', href: '/top'},
+  {label: 'マスターノード', icon: '/img/masternodes.svg', href: '/masternode'},
+  {label: 'プロポーザル', icon: '/img/proposals.svg', href: '/proposal'},
+  {label: '接続状況', icon: '/img/connections.svg', href: '/peer'},
+  {label: '統計データ', icon: '/img/statistics.svg', href: '/statistics'},
+  {label: 'コイン情報', icon: '/img/coininfo.svg', href: '/coin'},
   {label: 'API', icon: '/img/api.svg', href: '/api'}
 ]
 

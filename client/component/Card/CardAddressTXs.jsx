@@ -25,9 +25,9 @@ export default class CardAddressTXs extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'txId', title: 'Transaction ID' },
-        { key: 'amount', title: 'Amount' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'txId', title: 'トランザクションID' },
+        { key: 'amount', title: '枚数' },
+        { key: 'createdAt', title: '時刻' },
       ]
     };
   };

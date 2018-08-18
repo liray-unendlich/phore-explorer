@@ -22,12 +22,10 @@ class Overview extends Component {
 
     this.state = {
       cols: [
-        {title: 'Height', key: 'blockHeight'},
-        {title: 'Transaction Hash', key: 'txId'},
-        {title: 'Value', key: 'vout'},
-        'age',
-        'recipients',
-        {title: 'Created', key: 'createdAt'},
+        {title: 'ブロック数', key: 'blockHeight'},
+        {title: 'TXハッシュ', key: 'txId'},
+        {title: '値', key: 'vout'},
+        {title: '生成時刻', key: 'createdAt'},
       ]
     };
   };
@@ -44,10 +42,8 @@ class Overview extends Component {
 
       return ({
         ...tx,
-        age: diffSeconds < 60 ? `${ diffSeconds } seconds` : createdAt.fromNow(true),
         blockHeight: (<Link to={ `/block/${ tx.blockHeight }` }>{ tx.blockHeight }</Link>),
         createdAt: dateFormat(tx.createdAt),
-        recipients: tx.vout.length,
         txId: (<Link to={ `/tx/${ tx.txId }` }>{ tx.txId }</Link>),
         vout: numeral(blockValue).format('0,0.0000')
       });
@@ -55,7 +51,7 @@ class Overview extends Component {
 
     return (
       <div>
-        <HorizontalRule title="Latest Blocks" />
+        <HorizontalRule title="直近のブロック" />
         <Table
           cols={ this.state.cols }
           data={ txs } />

@@ -26,13 +26,13 @@ class Proposal extends Component {
     this.debounce = null;
     this.state = {
       cols: [
-        { key: 'name', title: 'Name' },
+        { key: 'name', title: '名前' },
         { key: 'url', title: 'URL' },
-        { key: 'address', title: 'Address' },
-        { key: 'monthly_amount', title: 'Monthly' },
-        { key: 'total_amount', title: 'Total' },
-        { key: 'end_height', title: 'End Block' },
-        { key: 'score', title: 'Votes' },
+        { key: 'address', title: 'アドレス' },
+        { key: 'monthly_amount', title: '月ごと' },
+        { key: 'total_amount', title: '合計' },
+        { key: 'end_height', title: '終了ブロック' },
+        { key: 'score', title: 'スコア' },
       ],
       error: null,
       loading: true,
@@ -99,8 +99,8 @@ class Proposal extends Component {
       <div>
         <HorizontalRule
           select={ select }
-          title="Proposals" />
-        <p>If score is more than 10% of count of masternode, the proposal will pass.</p>
+          title="プロポーザル" />
+        <p>スコアがマスターノードの数の10%以上であれば成立します。</p>
         <Table
           cols={ this.state.cols }
           data={ this.state.prs.map((pr) => ({

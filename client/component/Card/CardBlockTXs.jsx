@@ -20,9 +20,9 @@ export default class CardBlockTXs extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'txId', title: 'Transaction ID' },
-        { key: 'recipients', title: 'Recipients' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'txId', title: 'トランザクションID' },
+        { key: 'recipients', title: '参加者' },
+        { key: 'createdAt', title: '時刻' },
       ]
     };
   };

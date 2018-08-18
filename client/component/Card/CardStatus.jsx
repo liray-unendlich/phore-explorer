@@ -29,9 +29,9 @@ export default class CardStatus extends Component {
 
     return (
       <div className="animated fadeInUp">
-      <Card title="Status" className="card--status" >
+      <Card title="ステータス" className="card--status" >
         <div className="card__row">
-          <span className="card__label">Status:</span>
+          <span className="card__label">ステータス:</span>
           <span className="card__result card__result--status">
             <span className={ `u--text-${ isOn ? 'green' : 'red' }`}>
               { this.props.status }
@@ -39,7 +39,7 @@ export default class CardStatus extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Blocks:</span>
+          <span className="card__label">ブロック数:</span>
           <span className="card__result">
             <Link to={ `/block/${ this.props.blocks }` }>
               <b>
@@ -53,17 +53,17 @@ export default class CardStatus extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Peers:</span>
+          <span className="card__label">接続数:</span>
           <span className="card__result">
             <Link to="/peer">{ this.props.peers }</Link>
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Avg. Block Time:</span>
+          <span className="card__label">平均ブロック時間:</span>
           <span className="card__result">{ this.props.avgBlockTime.toFixed(2) } seconds</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Avg. MN Payment:</span>
+          <span className="card__label">平均MN報酬時間:</span>
           <span className="card__result">{ this.props.avgMNTime.toFixed(2) } hours</span>
         </div>
       </Card>

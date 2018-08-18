@@ -17,10 +17,10 @@ class Peer extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'ip', title: 'Address' },
-        { key: 'ver', title: 'Protocol' },
-        { key: 'subver', title: 'Sub-version' },
-        { key: 'country', title: 'Country' },
+        { key: 'ip', title: 'アドレス' },
+        { key: 'ver', title: 'プロトコル' },
+        { key: 'subver', title: 'バージョン' },
+        { key: 'country', title: '国' },
       ],
       loading: true,
       peers: []
@@ -43,7 +43,7 @@ class Peer extends Component {
 
     return (
       <div>
-        <HorizontalRule title="Connections" />
+        <HorizontalRule title="接続情報" />
         <Table
           cols={ this.state.cols }
           data={ this.state.peers.map(peer => ({

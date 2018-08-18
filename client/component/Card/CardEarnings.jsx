@@ -17,10 +17,10 @@ const CardEarnings = ({ coin }) => {
   const nusd = v => numeral(v).format('$0,0.00');
 
   return (
-    <Card title="Estimated Earnings (COIN/BTC/USD)">
+    <Card title="推定報酬 (PHR/BTC/USD)">
       <div className="row">
         <div className="col-sm-12 col-md-3">
-          DAILY
+          日ごと
         </div>
         <div className="col-sm-12 col-md-9">
           { nbtc(day) } PHR / { nbtc(day * coin.btc) } BTC / { nusd(day * coin.usd) } USD
@@ -28,7 +28,7 @@ const CardEarnings = ({ coin }) => {
       </div>
       <div className="row">
         <div className="col-sm-12 col-md-3">
-          WEEKLY
+          週ごと
         </div>
         <div className="col-sm-12 col-md-9">
           { nbtc(week) } PHR / { nbtc(week * coin.btc) } BTC / { nusd(week * coin.usd) } USD
@@ -36,7 +36,7 @@ const CardEarnings = ({ coin }) => {
       </div>
       <div className="row">
         <div className="col-sm-12 col-md-3">
-          MONTHLY
+          月ごと
         </div>
         <div className="col-sm-12 col-md-9">
           { nbtc(month) } PHR / { nbtc(month * coin.btc) } BTC / { nusd(month * coin.usd) } USD
@@ -44,7 +44,7 @@ const CardEarnings = ({ coin }) => {
       </div>
       <div className="row">
         <div className="col-sm-12 col-md-3">
-          YEARLY
+          年ごと
         </div>
         <div className="col-sm-12 col-md-9">
           { nbtc(year) } PHR / { nbtc(year * coin.btc) } BTC / { nusd(year * coin.usd) } USD
@@ -53,7 +53,7 @@ const CardEarnings = ({ coin }) => {
       <div className="row">
         <div className="col">
           <small className="u--text-gray">
-            * Estimates based on current block subsidy and active masternodes.
+            * 現在のブロック報酬・マスターノード数から見積もられた数字です。
           </small>
         </div>
       </div>

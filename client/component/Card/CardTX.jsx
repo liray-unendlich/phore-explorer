@@ -31,7 +31,7 @@ export default class CardTX extends Component {
           <span className="card__result">{ this.props.tx.txId }</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Confirmations:</span>
+          <span className="card__label">確認数:</span>
           <span className="card__result">
             <span className={ `card__badge badge badge-${ confirmBadgeClass }` }>
               { confirmValue }
@@ -44,23 +44,23 @@ export default class CardTX extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Block Value:</span>
+          <span className="card__label">ブロック枚数:</span>
           <span className="card__result">{ numeral(blockValue).format('0,0.0000') } PHR</span>
         </div>
         <div className="card__row">
-          <span className="card__label">Block Hash:</span>
+          <span className="card__label">ブロックハッシュ:</span>
           <span className="card__result">
             <Link to={ `/block/${ this.props.tx.blockHash }` }>{ this.props.tx.blockHash }</Link>
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Block Height:</span>
+          <span className="card__label">ブロック数:</span>
           <span className="card__result">
             <Link to={ `/block/${ this.props.tx.blockHeight }` }>{ this.props.tx.blockHeight }</Link>
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Timestamp:</span>
+          <span className="card__label">タイムスタンプ:</span>
           <span className="card__result">
             { dateFormat(this.props.tx.createdAt) }
           </span>

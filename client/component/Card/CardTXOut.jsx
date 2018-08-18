@@ -21,8 +21,8 @@ export default class CardTXOut extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'address', title: 'Address' },
-        { key: 'value', title: 'Amount' }
+        { key: 'address', title: 'アドレス' },
+        { key: 'value', title: '枚数' }
       ]
     };
   };

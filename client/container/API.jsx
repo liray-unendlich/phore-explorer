@@ -27,7 +27,7 @@ export default class API extends Component {
             <HorizontalRule className="api__documentation-title" title="API Documentation" />
             <div className="pr-4">
               <p className="api__intro">
-              The block explorer provides an API allowing users and/or applications to retrieve information from the network without the need for a local wallet.
+              ユーザー/アプリケーションがウォレットを直接利用せずにネットワークから情報を取得できるAPIをブロックエクスプローラは提供しています。
               </p>
               <div className="api__call-container">
                 { this.getSections() }

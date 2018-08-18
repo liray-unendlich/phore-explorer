@@ -33,7 +33,7 @@ export default class CardPoSCalc extends React.Component {
 
   render() {
     return (
-      <Card title="PoS Calculator">
+      <Card title="PoS 計算機">
         <div className="row">
           <div className="col-sm-12 col-md-8">
             <input
@@ -47,13 +47,13 @@ export default class CardPoSCalc extends React.Component {
           </div>
           <div className="col-sm-12 col-md-4 text-center">
             <button onClick={ this.handleClick }>
-              Estimate
+              計算
             </button>
           </div>
         </div>
         <div className="row">
           <div className="col-sm-12 text-gray">
-            Submit for a recommended staking breakdown depending on amount and masternode selection count if applicable.
+            金額に応じて、マスターノード/ステーキングの利益バランスを見積もってください。
           </div>
         </div>
       </Card>

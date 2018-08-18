@@ -37,7 +37,7 @@ export default class CardNetworkSummary extends Component {
       <div className="animated fadeInUp">
       <Card
         className="card--graph"
-        title="Network">
+        title="ネットワーク">
         <p className="card__data-main">
           <CountUp
             decimals={ 2 }

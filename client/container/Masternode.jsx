@@ -26,11 +26,11 @@ class Masternode extends Component {
     this.debounce = null;
     this.state = {
       cols: [
-        { key: 'addr', title: 'Address' },
-        { key: 'status', title: 'Status' },
-        { key: 'txHash', title: 'Collateral TX' },
-        { key: 'ver', title: 'Version' },
-        { key: 'active', title: 'Active' },
+        { key: 'addr', title: 'アドレス' },
+        { key: 'status', title: 'ステータス' },
+        { key: 'txHash', title: '担保 TXID' },
+        { key: 'ver', title: 'バージョン' },
+        { key: 'active', title: '開始時期' },
       ],
       error: null,
       loading: true,
@@ -101,7 +101,7 @@ class Masternode extends Component {
       <div>
         <HorizontalRule
           select={ select }
-          title="Masternodes" />
+          title="マスターノード" />
         <Table
           cols={ this.state.cols }
           data={ sortBy(this.state.mns.map((mn) => {

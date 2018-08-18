@@ -19,7 +19,7 @@ const CardROI = ({ coin, supply }) => {
           { coin.mnsOn } / { mns }
         </div>
         <div className="h5">
-          Active/Total Masternodes
+          稼働中/全体 マスターノード
         </div>
       </div>
       <div className="mb-3">
@@ -27,7 +27,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(roi).format('0,0.0000') }%
         </div>
         <div className="h5">
-          Estimated ROI
+          概算年利率
         </div>
       </div>
       <div className="mb-3">
@@ -35,7 +35,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(supply ? supply.t : 0.0).format('0,0.0000') } PHR
         </div>
         <div className="h5">
-          Coin Supply (Total)
+          発行枚数 (全体)
         </div>
       </div>
       <div className="mb-3">
@@ -43,7 +43,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(supply ? supply.c - (mns * mncoins) : 0.0).format('0,0.0000') } PHR
         </div>
         <div className="h5">
-          Coin Supply (Circulating)
+          流通枚数
         </div>
       </div>
       <div className="mb-3">
@@ -51,7 +51,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(coin.cap * coin.btc).format('0,0.0000') } BTC
         </div>
         <div className="h5">
-          Market Cap BTC
+          BTC建ての市場規模
         </div>
       </div>
       <div className="mb-3">
@@ -59,7 +59,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(coin.cap).format('$0,0.00') }
         </div>
         <div className="h5">
-          Market Cap USD
+          USD建ての市場規模
         </div>
       </div>
       <div className="mb-3">
@@ -67,7 +67,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(mns * mncoins).format('0,0.0000') } PHR
         </div>
         <div className="h5">
-          Coins Locked
+          ロックされている枚数
         </div>
       </div>
       <div className="mb-3">
@@ -75,7 +75,7 @@ const CardROI = ({ coin, supply }) => {
           { numeral(mncoins * coin.btc).format('0,0.0000') } BTC / { numeral(mncoins * coin.usd).format('$0,0.00') }
         </div>
         <div className="h5">
-          Masternode Worth
+          マスターノードの価値
         </div>
       </div>
     </Card>

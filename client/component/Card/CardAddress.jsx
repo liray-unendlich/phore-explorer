@@ -53,7 +53,7 @@ export default class CardAddress extends Component {
           <div className="card--address">
             <div className="card__row">
               <span className="card__label card--address-wallet">
-                Wallet Address:
+                アドレス:
               </span>
               <span className="card__result card--address-hash">
                 { this.props.address }
@@ -61,7 +61,7 @@ export default class CardAddress extends Component {
             </div>
             <div className="card__row">
               <span className="card__label">
-                Sent:
+                送金枚数:
               </span>
               <span className="card__result">
                 -{ numeral(this.props.received - this.props.balance).format('0,0.0000') } PHR
@@ -69,7 +69,7 @@ export default class CardAddress extends Component {
             </div>
             <div className="card__row">
               <span className="card__label">
-                Received:
+                入金枚数:
               </span>
               <span className="card__result">
                 +{ numeral(this.props.received).format('0,0.0000') } PHR
@@ -77,7 +77,7 @@ export default class CardAddress extends Component {
             </div>
             <div className="card__row">
               <span className="card__label">
-                Balance:
+                残高:
               </span>
               <span className="card__result">
                 { numeral(this.props.balance).format('0,0.0000') } PHR

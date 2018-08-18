@@ -1,122 +1,122 @@
 const APIdata = [
   {
-    heading: 'API Calls',
-    subHeading: 'Return data from coind',
+    heading: 'API 一覧',
+    subHeading: 'phored からデータを取得します。',
     calls: [
         {
           name: 'getAddress [hash]',
-          info: 'Returns information for given address.',
+          info: '指定アドレスの情報を返します。',
           path: '/api/address/PRgtiCnHnxcNVfRbGttX9EfNJpuZcTodY7'
         },
         {
           name: 'getBlock [hash] [height]',
-          info: 'Returns block information for the given hash or height.',
+          info: '与えられたハッシュ/数のブロックの情報を返します。',
           path: '/api/block/6ed5fa55804256b300ae98776226005c310e098f80f16aa0bca27c538a7c6159'
         },
         {
           name: 'getBlockAverage',
-          info: 'Returns the average block time over 24 hours.',
+          info: '24時間の平均ブロック数を返します。',
           path: '/api/block/average'
         },
         {
           name: 'getCoin',
-          info: 'Returns coin information.',
+          info: 'コインの情報を返します。',
           path: '/api/coin/'
         },
         {
           name: 'getCoinHistory',
-          info: 'Returns the coin history.',
+          info: 'コインのこれまでの情報を返します。',
           path: '/api/coin/history'
         },
         {
           name: 'getMasternodes',
-          info: 'Returns masternode information.',
+          info: 'マスターノード一覧を返します。',
           path: '/api/masternode'
         },
         {
           name: 'getMasternodeByAddress',
-          info: 'Returns masternode information by Wallet Address.',
+          info: '指定アドレスのマスターノードの情報を返します。',
           path: '/api/masternode/PWjrqSZFvuhW6YhjEcTYEwC77Yvb1fZh6B'
         },
         {
           name: 'getMasternodeCount',
-          info: 'Returns masternodes enabled and total counts.',
+          info: '稼働中のマスターノード数および総数を返します。',
           path: '/api/masternodecount'
         },
         {
           name: 'getMasternodeAverage',
-          info: 'Returns the average payment for a masternode vs 24 hours.',
+          info: '平均のマスターノードの報酬時間を返します。',
           path: '/api/masternode/average'
         },
         {
           name: 'getProposalLists',
-          info: 'Returns list of proposals.',
+          info: 'プロポーザルのリストを返します。',
           path: '/api/proposal'
         },
         {
           name: 'getProposalByName',
-          info: 'Returns proposal information by Name.',
+          info: '指定プロポーザルの情報を返します。',
           path: '/api/proposal/PhoreCoreTeam'
         },
         {
           name: 'getPeer',
-          info: 'Returns peer information.',
+          info: '接続情報を返します。',
           path: '/api/peer'
         },
         {
           name: 'getSupply',
-          info: 'Returns circulating and total supply information.<br />https://github.com/coincheckup/crypto-supplies',
+          info: '通貨の流通枚数・総数を返します。',
           path: '/api/supply'
         },
         {
           name: 'getTop100',
-          info: 'Returns top 100',
+          info: '保持数上位100のリストを返します。',
           path: '/api/top100'
         },
         {
           name: 'getTXs',
-          info: 'Returns transaction information.',
+          info: 'トランザクション情報を返します。',
           path: '/api/tx'
         },
         {
           name: 'getTXLatest',
-          info: 'Returns latest transaction information.',
+          info: '最新のトランザクションの情報を返します。',
           path: '/api/tx/latest'
         },
         {
           name: 'getTX [hash]',
-          info: 'Returns information for the given transaction.',
+          info: '指定TXハッシュの情報を返します。',
           path: '/api/tx/8222d3ff3267550fad216e3b603f89170aa7e60162b6a45fadf25cf08640f25f'
         },
         {
           name: 'getDifficulty',
-          info: 'Returns the current difficulty.',
+          info: '現在のDifficultyを返します。',
           path: '/api/getdifficulty'
         },
         {
           name: 'getConnectionCount',
-          info: 'Returns the number of connections the block explorer has to other nodes.',
+          info: 'ブロックエクスプローラと他のノードとの接続数を返します。',
           path: '/api/getconnectioncount'
         },
         {
           name: 'getBlockCount',
-          info: 'Returns the current block index.',
+          info: '現在のブロック数を返します。',
           path: '/api/getblockcount'
         },
         {
           name: 'getNetworkHashPS',
-          info: 'Returns the current network hashrate. (hash/s)',
+          info: '現在のネットワークハッシュレートを返します。 (hash/s)',
           path: '/api/getnetworkhashps'
         },
     ]
   },
   {
-    heading: 'Extended API',
-    subHeading: 'Return data from local indexes',
+    heading: '拡張 API',
+    subHeading: 'データベースからデータを取得します。',
     calls: [
         {
           name: 'getMoneySupply',
-          info: 'Returns the current money supply.',
+          info: '現在の発行枚数を返します。',
           path: '/ext/getmoneysupply'
         },
         // { name: 'getdistribution',
@@ -125,12 +125,12 @@ const APIdata = [
         // },
         {
           name: 'getAddress',
-          info: 'Returns address information.',
+          info: 'アドレスの状態を返します。',
           path: '/ext/getaddress'
         },
         {
           name: 'getBalance',
-          info: 'Returns the current balance.',
+          info: '現在のバランスを返します。',
           path: '/ext/getbalance'
         },
         {

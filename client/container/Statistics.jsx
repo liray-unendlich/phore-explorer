@@ -120,12 +120,12 @@ class Statistics extends Component {
 
     return (
       <div className="animated fadeInUp">
-        <HorizontalRule title="Statistics" />
+        <HorizontalRule title="統計データ" />
         { Array.from(hashes.keys()).slice(1, -1).length <= 6 && <Notification /> }
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>Network Hash Rate Last 7 Days</h3>
+              <h3>過去7日のネットワークハッシュ</h3>
               <h4>{ numeral(netHash.hash).format('0,0.0000') } { netHash.label }/s { day }</h4>
               <h5>Difficulty: { numeral(this.props.coin.diff).format('0,0.0000') }</h5>
               <div>
@@ -137,9 +137,9 @@ class Statistics extends Component {
               </div>
             </div>
             <div className="col-md-12 col-lg-6">
-              <h3>Transactions Last 7 Days</h3>
+              <h3>過去7日間のトランザクション数</h3>
               <h4>{ numeral(tTX).format('0,0') } { day }</h4>
-              <h5>Average: { numeral(avgTX).format('0,0') } Per Hour</h5>
+              <h5>平均: 1時間当たり { numeral(avgTX).format('0,0') } 個</h5>
               <div>
                 <GraphLineFull
                   color="#1991eb"
@@ -151,7 +151,7 @@ class Statistics extends Component {
           </div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>Phore Price USD</h3>
+              <h3>PhoreのUSD価格</h3>
               <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
               <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
               <div>
@@ -163,7 +163,7 @@ class Statistics extends Component {
               </div>
             </div>
             <div className="col-md-12 col-lg-6">
-              <h3>Masternodes Online Last 7 Days</h3>
+              <h3>過去7日間で稼働していたマスターノード数</h3>
               <h4>{ this.props.coin.mnsOn } { day }</h4>
               <h5>Seen: { this.props.coin.mnsOn + this.props.coin.mnsOff }</h5>
               <div>
