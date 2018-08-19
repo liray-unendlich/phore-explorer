@@ -48,7 +48,7 @@ const CardROI = ({ coin, supply }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral(coin.cap * coin.btc).format('0,0.0000') } BTC
+          { numeral(coin.supply * coin.btc).format('0,0.0000') } BTC
         </div>
         <div className="h5">
           BTC建ての市場規模
