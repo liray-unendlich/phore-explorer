@@ -27,7 +27,7 @@ async function syncCoin() {
   }
 
   const coin = new Coin({
-    cap: market.market_cap_usd,
+    cap: market.market_cap_jpy,
     createdAt: date,
     blocks: info.blocks,
     btc: market.price_btc,
