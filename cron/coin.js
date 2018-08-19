@@ -15,7 +15,7 @@ const Coin = require('../model/coin');
 async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();
   // Setup the coinmarketcap.com api url.
-  const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;
+  const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }/?convert=JPY`;
 
   const info = await rpc.call('getinfo');
   const masternodes = await rpc.call('getmasternodecount');
@@ -38,7 +38,7 @@ async function syncCoin() {
     peers: info.connections,
     status: 'Online',
     supply: market.available_supply, // TODO: change to actual count from db.
-    usd: market.price_usd
+    usd: market.price_jpy
   });
 
   await coin.save();

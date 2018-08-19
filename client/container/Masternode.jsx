@@ -30,7 +30,6 @@ class Masternode extends Component {
         { key: 'status', title: 'ステータス' },
         { key: 'txHash', title: '担保 TXID' },
         { key: 'ver', title: 'バージョン' },
-        { key: 'active', title: '開始時期' },
       ],
       error: null,
       loading: true,
@@ -110,13 +109,11 @@ class Masternode extends Component {
 
             return {
               ...mn,
-              active: moment().subtract(mn.active, 'seconds').utc().fromNow(),
               addr: (
                 <Link to={ `/address/${ mn.addr }` }>
                   { `${ mn.addr.substr(0, 20) }...` }
                 </Link>
               ),
-              lastPaidAt: isEpoch ? 'N/A' : dateFormat(mn.lastPaidAt),
               txHash: (
                 <Link to={ `/tx/${ mn.txHash }` }>
                   { `${ mn.txHash.substr(0, 20) }...` }

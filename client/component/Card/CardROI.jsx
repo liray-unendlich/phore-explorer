@@ -56,10 +56,10 @@ const CardROI = ({ coin, supply }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral(coin.cap).format('$0,0.00') }
+          { numeral(coin.cap).format('0,0.00') } JPY
         </div>
         <div className="h5">
-          USD建ての市場規模
+          JPY建ての市場規模
         </div>
       </div>
       <div className="mb-3">
@@ -72,7 +72,7 @@ const CardROI = ({ coin, supply }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral(mncoins * coin.btc).format('0,0.0000') } BTC / { numeral(mncoins * coin.usd).format('$0,0.00') }
+          { numeral(mncoins * coin.btc).format('0,0.0000') } BTC / { numeral(mncoins * coin.usd).format('0,0.00') }JPY
         </div>
         <div className="h5">
           マスターノードの価値

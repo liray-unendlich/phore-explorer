@@ -308,4 +308,3 @@ else
     pm2 restart index
     echo "BlockExplorer updated!"
 fi
-

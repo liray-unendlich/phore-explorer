@@ -14,16 +14,16 @@ const CardEarnings = ({ coin }) => {
   const year = blockchain.getMNBlocksPerYear(coin.mnsOn) * subsidy;
 
   const nbtc = v => numeral(v).format('0,0.0000');
-  const nusd = v => numeral(v).format('$0,0.00');
+  const nusd = v => numeral(v).format('0,0.00');
 
   return (
-    <Card title="推定報酬 (PHR/BTC/USD)">
+    <Card title="推定報酬 (PHR/BTC/JPY)">
       <div className="row">
         <div className="col-sm-12 col-md-3">
           日ごと
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(day) } PHR / { nbtc(day * coin.btc) } BTC / { nusd(day * coin.usd) } USD
+          { nbtc(day) } PHR / { nbtc(day * coin.btc) } BTC / { nusd(day * coin.usd) } JPY
         </div>
       </div>
       <div className="row">
@@ -31,7 +31,7 @@ const CardEarnings = ({ coin }) => {
           週ごと
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(week) } PHR / { nbtc(week * coin.btc) } BTC / { nusd(week * coin.usd) } USD
+          { nbtc(week) } PHR / { nbtc(week * coin.btc) } BTC / { nusd(week * coin.usd) } JPY
         </div>
       </div>
       <div className="row">
@@ -39,7 +39,7 @@ const CardEarnings = ({ coin }) => {
           月ごと
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(month) } PHR / { nbtc(month * coin.btc) } BTC / { nusd(month * coin.usd) } USD
+          { nbtc(month) } PHR / { nbtc(month * coin.btc) } BTC / { nusd(month * coin.usd) } JPY
         </div>
       </div>
       <div className="row">
@@ -47,7 +47,7 @@ const CardEarnings = ({ coin }) => {
           年ごと
         </div>
         <div className="col-sm-12 col-md-9">
-          { nbtc(year) } PHR / { nbtc(year * coin.btc) } BTC / { nusd(year * coin.usd) } USD
+          { nbtc(year) } PHR / { nbtc(year * coin.btc) } BTC / { nusd(year * coin.usd) } JPY
         </div>
       </div>
       <div className="row">

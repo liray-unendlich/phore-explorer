@@ -333,7 +333,7 @@ class PoS extends Component {
         </div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
-            合計(USD):
+            合計(JPY):
           </div>
           <div className="col-sm-12 col-md-2">
             { numeral((vX.mnSubsidy * mns + vX.posSubsidy) * this.props.coin.usd).format('$0,0.00') }
