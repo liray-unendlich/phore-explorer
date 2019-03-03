@@ -111,7 +111,6 @@ sleep 2s
 cd
 mkdir -p install_log/
 installMongo >> install_log/mongo.log
-installPhore >> install_log/phore.log
 installNodeAndYarn >> install_log/node.log
 installBlockExplorer >> install_log/explorer.log
 echo "Finished installation!"
