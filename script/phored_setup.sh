@@ -118,5 +118,25 @@ addnode=94.16.123.125
 addnode=95.179.143.66
 EOL
 
+# make service
+cat > phored.service << EOL
+[Unit]
+Description=phored
+After=network.target
+[Service]
+Type=forking
+User=explorer
+WorkingDirectory=/home/explorer
+ExecStart=/usr/local/bin/phored -datadir=/home/explorer/.phore
+ExecStop=/usr/local/bin/phore-cli -datadir=/home/explorer/.phore stop
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+EOL
+
+sudo mv phored.service /etc/systemd/system/
+sudo systemctl start phored
+sudo systemctl enable phored
+
 # Start node.
 phored

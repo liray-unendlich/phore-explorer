@@ -281,7 +281,8 @@ echo "Complete updating!"
 # Variables
 echo "Setting up variables..."
 ipaddr=$(curl -s inet-ip.info)
-if [ -n $(which phored) ]
+echo "check phore daemon is installed"
+if [ -e "/usr/local/bin/phored" ];
 then
   block=$(phore-cli getblockchaininfo | jq .blocks)
   header=$(phore-cli getblockchaininfo | jq .headers)
