@@ -316,7 +316,7 @@ sleep 5s
 USERNAME=$(whoami)
 if [ ${USERNAME} == "root" ]
 then
-  dir="/root/"
+  dir="/root"
 else
   dir="/home/"${USERNAME}
 fi
